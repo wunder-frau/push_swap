@@ -6,7 +6,7 @@
 /*   By: istasheu <istasheu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:02:32 by istasheu          #+#    #+#             */
-/*   Updated: 2023/12/29 10:25:30 by istasheu         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:14:09 by istasheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,16 @@ typedef struct s_stack
 	int		position;
 	struct	s_stack *next;
 } t_stack;
+
+/* stack */
+
+t_stack	*stack_new(int value);
+t_stack *fill_stk(int argc, char **argv);
+void	stack_add_bottom(t_stack **stack, t_stack *new);
+t_stack	*get_stack_bottom(t_stack *stack);
+
+/* utils */
+
+int	ft_atoi(const char *str);
+
 #endif

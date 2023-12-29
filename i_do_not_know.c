@@ -6,8 +6,30 @@
 /*   By: istasheu <istasheu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:16:01 by istasheu          #+#    #+#             */
-/*   Updated: 2023/12/28 11:16:50 by istasheu         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:46:45 by istasheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_stack *fill_stk(int argc, char **argv)
+{
+	t_stack		*stk_a;
+	long int	nb;
+	int			i;
+
+	stk_a = NULL;
+	nb = 0;
+	i = 1;
+
+	while (i < argc)
+	{
+		nb = ft_atoi(argv[i]);
+		if (i == 1)
+			stk_a = stack_new((int)nb);
+		else
+			stack_add_bottom(&stk_a, stack_new((int)nb));
+		i++;
+	}
+	return (stk_a);
+}
