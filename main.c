@@ -6,7 +6,7 @@
 /*   By: istasheu <istasheu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 09:19:40 by istasheu          #+#    #+#             */
-/*   Updated: 2023/12/29 14:46:43 by istasheu         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:46:04 by istasheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ int	main(int argc, char **argv)
 		return (0);
 	stk_b = NULL;
 	stk_a = fill_stk(argc, argv);
+
+	
+	/* check */	
 	print_stack(stk_a);
+	printf("%d", stk_len(stk_a));
+	/********/
+
 	return (0);
 }

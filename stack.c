@@ -6,7 +6,7 @@
 /*   By: istasheu <istasheu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:07:56 by istasheu          #+#    #+#             */
-/*   Updated: 2023/12/29 11:11:58 by istasheu         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:40:03 by istasheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,22 @@ void	stack_add_bottom(t_stack **stack, t_stack *new)
 	}
 	tail = get_stack_bottom(*stack);
 	tail->next = new;
+}
+
+int	stk_len(t_stack *stk)
+{
+	int len;
+
+	len = 0;
+
+	if (!stk)
+		return(0);
+	while (stk != NULL)
+	{
+		stk = stk->next;
+		len++;
+	}
+	return (len);
 }
 
 t_stack	*stack_new(int value)

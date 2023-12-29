@@ -22,7 +22,7 @@ t_stack *fill_stk(int argc, char **argv)
 	nb = 0;
 	i = 1;
 
-	while (i < argc)
+	while (argc > i)
 	{
 		nb = ft_atoi(argv[i]);
 		if (i == 1)
