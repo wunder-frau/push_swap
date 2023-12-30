@@ -40,4 +40,6 @@ void	add_index(t_stack *stk_a, int stk_len);
 int	ft_atoi(const char *str);
 void	free_stack(t_stack **stack);
 
+int	get_max_index(t_stack *stack);
+
 #endif

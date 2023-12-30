@@ -89,11 +89,17 @@ int	main(int argc, char **argv)
 	stack_len = stk_len(stk_a);
 	add_index(stk_a, stack_len + 1);
 
-	
 	/* check */	
 	print_stack(stk_a);
 	printf("Stack length: %d\n", stack_len);
 	print_indices(stk_a);
+
+	
+	get_max_index(stk_a);
+
+    // Displaying the sorted stack
+    printf("Sorted Stack: ");
+	printf("Stack length: %d\n", get_max_index(stk_a));
 	/********/
 	free_stack(&stk_a);
 	free_stack(&stk_b);
