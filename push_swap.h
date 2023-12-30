@@ -33,9 +33,11 @@ t_stack *fill_stk(int argc, char **argv);
 void	add_stack_back(t_stack **stack, t_stack *new);
 t_stack	*get_lstlast(t_stack *stack);
 int	stk_len(t_stack *stk);
+void	add_index(t_stack *stk_a, int stk_len);
 
 /* utils */
 
 int	ft_atoi(const char *str);
+void	free_stack(t_stack **stack);
 
 #endif

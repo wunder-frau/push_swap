@@ -50,44 +50,46 @@ int	stk_len(t_stack *stk)
 	return (len);
 }
 
-void	add_index(t_stack *stk_a, int stk_len)
-{
-	t_stack *ptr;
-	t_stack	*highest;
-	int		value;
+// void	add_index(t_stack *stk_a, int stk_len)
+// {
+// 	t_stack *ptr;
+// 	t_stack	*highest;
+// 	int		value;
 
-	while (stk_len > 0)
-	{
-		ptr = stk_a;
-		highest = NULL;
-		value = INT_MAX;
-		while(ptr)
-		{
-			if (ptr->value == INT_MAX && ptr->index == 0)
-				ptr->index = 1;
-			if (ptr->value > value && ptr->index == 0)
-			{
-				value = ptr->value;
-				highest = ptr;
-				ptr = stk_a;
-			}
-			else
-				ptr = ptr->next;
-			if (highest != NULL)
-				highest->index = stk_len;
-		}
-	}
-}
+// 	while (--stk_len > 0)
+// 	{
+// 		ptr = stk_a;
+// 		highest = NULL;
+// 		value = INT_MAX;
+// 		while(ptr)
+// 		{
+// 			if (ptr->value == INT_MAX && ptr->index == 0)
+// 				ptr->index = 1;
+// 			if (ptr->value > value && ptr->index == 0)
+// 			{
+// 				value = ptr->value;
+// 				highest = ptr;
+// 				ptr = stk_a;
+// 			}
+// 			else
+// 				ptr = ptr->next;
+// 			if (highest != NULL)
+// 				highest->index = stk_len;
 
-t_stack	*stack_new(int value)
-{
-	t_stack	*new;
-	new = malloc(sizeof * new);
-	if (!new)
-		return (NULL);
-	new->value = value;
-	new->index = 0;
-	new->position = -1;
-	new->next = NULL;
-	return (new);
-}
+// 				printf("Node value: %d, Node index: %d\n", highest->value, highest->index);
+// 		}
+// 	}
+// }
+
+// t_stack	*stack_new(int value)
+// {
+// 	t_stack	*new;
+// 	new = malloc(sizeof * new);
+// 	if (!new)
+// 		return (NULL);
+// 	new->value = value;
+// 	new->index = 0;
+// 	new->position = -1;
+// 	new->next = NULL;
+// 	return (new);
+// }
