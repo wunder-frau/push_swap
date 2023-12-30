@@ -64,7 +64,7 @@ void	add_index(t_stack *stk_a, int stk_len)
 		while(ptr)
 		{
 			if (ptr->value == INT_MAX && ptr->index == 0)
-				ptr->index == 1;
+				ptr->index = 1;
 			if (ptr->value > value && ptr->index == 0)
 			{
 				value = ptr->value;
@@ -73,7 +73,7 @@ void	add_index(t_stack *stk_a, int stk_len)
 			}
 			else
 				ptr = ptr->next;
-			if (hghest != NULL)
+			if (highest != NULL)
 				highest->index = stk_len;
 		}
 	}
