@@ -30,8 +30,8 @@ typedef struct s_stack
 
 t_stack	*stack_new(int value);
 t_stack *fill_stk(int argc, char **argv);
-void	stack_add_bottom(t_stack **stack, t_stack *new);
-t_stack	*get_stack_bottom(t_stack *stack);
+void	add_stack_back(t_stack **stack, t_stack *new);
+t_stack	*get_lstlast(t_stack *stack);
 int	stk_len(t_stack *stk);
 
 /* utils */

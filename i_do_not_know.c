@@ -28,7 +28,7 @@ t_stack *fill_stk(int argc, char **argv)
 		if (i == 1)
 			stk_a = stack_new((int)nb);
 		else
-			stack_add_bottom(&stk_a, stack_new((int)nb));
+			add_stack_back(&stk_a, stack_new((int)nb));
 		i++;
 	}
 	return (stk_a);
