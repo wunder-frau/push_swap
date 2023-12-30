@@ -100,6 +100,8 @@ int	main(int argc, char **argv)
     // Displaying the sorted stack
     printf("Sorted Stack: ");
 	printf("Stack length: %d\n", get_max_index(stk_a));
+	compact_stack_sort(stk_a);
+	printf("compact: %d\n", stk_a);
 	/********/
 	free_stack(&stk_a);
 	free_stack(&stk_b);
