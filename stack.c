@@ -6,11 +6,18 @@
 /*   By: istasheu <istasheu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:07:56 by istasheu          #+#    #+#             */
-/*   Updated: 2023/12/29 17:21:10 by istasheu         ###   ########.fr       */
+/*   Updated: 2023/12/31 13:52:10 by istasheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_stack *get_penultimate(t_stack *stack)
+{
+	while (stack && stack->next && stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
 
 t_stack	*get_lstlast(t_stack *stack)
 {

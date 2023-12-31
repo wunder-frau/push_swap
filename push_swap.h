@@ -35,6 +35,7 @@ t_stack	*get_lstlast(t_stack *stack);
 int	stk_len(t_stack *stk);
 void	add_index(t_stack *stk_a, int stk_len);
 void	compact_stack_sort(t_stack **stack);
+t_stack *get_penultimate(t_stack *stack);
 
 /* utils */
 
@@ -43,5 +44,6 @@ void	free_stack(t_stack **stack);
 
 int	get_max_index(t_stack *stack);
 void	rotate(t_stack **stack);
+void	rev_rotate(t_stack **stack);
 
 #endif

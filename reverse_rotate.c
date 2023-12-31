@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compact_stack_sort.c                               :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: istasheu <istasheu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/30 13:06:23 by istasheu          #+#    #+#             */
-/*   Updated: 2023/12/31 14:02:32 by istasheu         ###   ########.fr       */
+/*   Created: 2023/12/31 10:49:52 by istasheu          #+#    #+#             */
+/*   Updated: 2023/12/31 11:50:19 by istasheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_max_index(t_stack *stack)
+void	rev_rotate(t_stack **stack)
 {
-	int	index;
+	t_stack	*temp;
+	t_stack *tail;
+	t_stack *prev_to_tail;
 
-	index = stack->index;
-
-	while(stack)
-	{
-		if (stack->index > index)
-			index = stack->index;
-		stack = stack->next;
-	}
-	return (index);
-} 
-
-
-void	compact_stack_sort(t_stack **stack)
-{
-	int highest;
-
-	highest = get_max_index(*stack);
-	if ((*stack)->index == highest)
-		rotate(stack);
-	else if ((*stack)->next->index == highest)
-		rev_rotate(stack);
+	tail = get_lstlast(*stack);
+	prev_to_tail = get_penultimate(*stack);
+	temp = *stack;
+	*stack = tail;
+	(*stack)->next = temp;
+	prev_to_tail->next = NULL;
 }
