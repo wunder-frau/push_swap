@@ -45,5 +45,6 @@ void	free_stack(t_stack **stack);
 int	get_max_index(t_stack *stack);
 void	rotate(t_stack **stack);
 void	rev_rotate(t_stack **stack);
+void    swap(t_stack *stack);
 
 #endif

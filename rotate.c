@@ -22,4 +22,6 @@ void	rotate(t_stack **stack)
 	tail = get_lstlast(*stack);
 	temp->next = NULL;
 	tail->next = temp;
+	/* check */
+	printf("rotate\n");
 }

@@ -37,4 +37,6 @@ void	compact_stack_sort(t_stack **stack)
 		rotate(stack);
 	else if ((*stack)->next->index == highest)
 		rev_rotate(stack);
+	if ((*stack)->index > (*stack)->next->index)
+		swap(*stack);
 }

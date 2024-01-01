@@ -24,4 +24,6 @@ void	rev_rotate(t_stack **stack)
 	*stack = tail;
 	(*stack)->next = temp;
 	prev_to_tail->next = NULL;
+	/* check */
+	printf("rev_rotate\n");
 }
