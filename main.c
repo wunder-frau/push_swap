@@ -76,6 +76,14 @@ static void print_indices(t_stack *stk_a)
     printf("\n");
 }
 
+static void	push_swap(t_stack **stack_a, int stack_len)
+{
+	if (stack_len == 2)
+		swap(*stack_a);
+	else if (stack_len == 3)
+		compact_stack_sort(stack_a);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stk_a;
@@ -102,7 +110,8 @@ int	main(int argc, char **argv)
 	printf("Stack length: %d\n", get_max_index(stk_a));
 	
 	
-	 compact_stack_sort(&stk_a);
+	 //compact_stack_sort(&stk_a);
+	 push_swap(&stk_a, stack_len);
 
     // Print the result of rotate()
     printf("After compact_stack_sort:\n");

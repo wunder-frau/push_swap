@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+/* Shift down all elements of stack a by 1.
+The last element becomes the first one. */
+
 void	rev_rotate(t_stack **stack)
 {
 	t_stack	*temp;
