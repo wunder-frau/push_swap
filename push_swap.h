@@ -18,19 +18,6 @@
 /*
 # include <unistd.h>
 # include <limits.h>
-void sa(t_node *stack_a)
-{
-	ft_swap(stack_a, stack_a->next);
-}
-void sb(t_node *stack_b)
-{
-	ft_swap(stack_b, stack_b->next);
-}
-void ss(t_node *stack_a, t_node *stack_b)
-{
-	sa(stack_a);
-	sb(stack_b);
-}
 */
 
 typedef struct s_node
@@ -43,13 +30,21 @@ typedef struct s_node
 /* node_utils.c */
 void	ft_swap(t_node *a, t_node *b);
 t_node	*ft_newnode(int value);
+void	ft_incrind(t_node *tail);
 void	ft_insert(t_node *prev, t_node *curr);
 t_node	*ft_at(t_node *head, int index);
 t_node	*ft_last(t_node *node);
+void	ft_pushfront(t_node **head, int value);
 void	ft_pushback(t_node *head, int value);
 
 /* quicksort.c */
 int		ft_partition(t_node *head, int start, int end);
 void	ft_quicksort(t_node *head, int start, int end);
+
+/* actions.c */
+void sa(t_node *stack_a);
+void sb(t_node *stack_b);
+void ss(t_node *stack_a, t_node *stack_b);
+
 
 #endif

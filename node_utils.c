@@ -27,23 +27,29 @@ t_node	*ft_newnode(int value)
 }
 
 /**
- * Inserts node at any position after prev node.
- * Iteration is used to update indices.
+ * Increment eahc index after the node.
  */
-void	ft_insert(t_node *prev, t_node *curr)
+void	ft_incrind(t_node *tail)
 {
-	t_node	*tail;
-	if (prev == NULL || curr == NULL)
-		return;
-	curr->next = prev->next;
-	prev->next = curr;
-	curr->index = prev->index;
-	tail = prev->next;
 	while (tail)
 	{
 		(tail->index)++;
 		tail = tail->next;
 	}
+}
+
+/**
+ * Inserts node at any position after prev node.
+ * Iteration is used to update indices.
+ */
+void	ft_insert(t_node *prev, t_node *curr)
+{
+	if (prev == NULL || curr == NULL)
+		return;
+	curr->next = prev->next;
+	prev->next = curr;
+	curr->index = prev->index;
+	ft_incrind(prev->next);
 }
 
 /**
@@ -69,6 +75,20 @@ t_node *ft_last(t_node *node)
 	while (node && node->next != NULL)
 		node = node->next;
 	return (node);
+}
+
+/**
+ * Create node at the end with a value.
+ */
+void	ft_pushfront(t_node **head, int value)
+{
+	t_node *new;
+
+	new = ft_newnode(value);
+	if (head || new)
+		new->next = *head;
+	*head = new;
+	ft_incrind(new->next);
 }
 
 /**
