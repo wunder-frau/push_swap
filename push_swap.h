@@ -14,37 +14,18 @@
 # define PUSH_SWAP_H
 
 # include <stdio.h>
-# include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
 
-typedef struct s_stack
+typedef struct s_node
 {
-	int		value;
 	int		index;
-	int		position;
-	struct	s_stack *next;
-} t_stack;
+	int		value;
+	struct	s_node *next;
+} t_node;
 
-/* stack */
-
-t_stack	*stack_new(int value);
-t_stack *fill_stk(int argc, char **argv);
-void	add_stack_back(t_stack **stack, t_stack *new);
-t_stack	*get_lstlast(t_stack *stack);
-int	stk_len(t_stack *stk);
-void	add_index(t_stack *stk_a, int stk_len);
-void	compact_stack_sort(t_stack **stack);
-t_stack *get_penultimate(t_stack *stack);
-
-/* utils */
-
-int	ft_atoi(const char *str);
-void	free_stack(t_stack **stack);
-
-int	get_max_index(t_stack *stack);
-void	rotate(t_stack **stack);
-void	rev_rotate(t_stack **stack);
-void    swap(t_stack *stack);
+void	ft_swap(t_node *a, t_node *b);
+t_node	*ft_newnode(int value);
+void	ft_insert(t_node *prev, t_node *curr);
+t_node	*ft_at(t_node *head, int index);
 
 #endif
