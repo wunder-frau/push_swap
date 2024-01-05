@@ -38,6 +38,14 @@ void	ft_incrind(t_node *tail)
 	}
 }
 
+void	ft_decrind(t_node *tail)
+{
+	while (tail)
+	{
+		(tail->index)--;
+		tail = tail->next;
+	}
+}
 /**
  * Inserts node at any position after prev node.
  * Iteration is used to update indices.
@@ -108,10 +116,32 @@ void	ft_revrotate(t_node **head)
 	t_node	*last;
 
 	last = ft_last(*head);
+	if(*head == NULL || last == *head)
+		return ;
 	ft_at(*head, last->index - 1)->next = NULL;
 	last->next = *head;
 
 	*head = last;
 	(*head)->index = 0;
 	ft_incrind((*head)->next);
+}
+
+void	ft_rotate(t_node **head)
+{
+	t_node	*last;
+	t_node	*temp;
+	int	last_ind;
+
+	if (*head == NULL || (*head)->next == NULL)
+		return ;
+
+	temp = *head;
+	*head = (*head)->next;
+	last = ft_last(*head);
+	last_ind = last->index;
+	temp->next = NULL;
+	last->next = temp;
+
+	ft_decrind(*head);
+	ft_last(*head)->index = last_ind;
 }

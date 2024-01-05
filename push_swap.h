@@ -31,12 +31,14 @@ typedef struct s_node
 void	ft_swap(t_node *a, t_node *b);
 t_node	*ft_newnode(int value);
 void	ft_incrind(t_node *tail);
+void	ft_decrind(t_node *tail);
 void	ft_insert(t_node *prev, t_node *curr);
 t_node	*ft_at(t_node *head, int index);
 t_node	*ft_last(t_node *node);
 void	ft_pushfront(t_node **head, int value);
 void	ft_pushback(t_node *head, int value);
 void	ft_revrotate(t_node **head);
+void	ft_rotate(t_node **head);
 
 /* quicksort.c */
 int		ft_partition(t_node *head, int start, int end);
