@@ -36,6 +36,7 @@ t_node	*ft_at(t_node *head, int index);
 t_node	*ft_last(t_node *node);
 void	ft_pushfront(t_node **head, int value);
 void	ft_pushback(t_node *head, int value);
+void	ft_revrotate(t_node **head);
 
 /* quicksort.c */
 int		ft_partition(t_node *head, int start, int end);
@@ -45,6 +46,11 @@ void	ft_quicksort(t_node *head, int start, int end);
 void sa(t_node *stack_a);
 void sb(t_node *stack_b);
 void ss(t_node *stack_a, t_node *stack_b);
+void pa(t_node **stack_a, t_node *stack_b);
+void pb(t_node **stack_b, t_node *stack_a);
+void rra(t_node **stack_a);
+void rrb(t_node **stack_b);
+void rrr(t_node **stack_a, t_node **stack_b);
 
 
 #endif

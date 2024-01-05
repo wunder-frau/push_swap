@@ -98,3 +98,20 @@ void	ft_pushback(t_node *head, int value)
 {
 	ft_insert(ft_last(head), ft_newnode(value));
 }
+
+/**
+ * Shift up all elements of linked list a by 1.
+ * The first element becomes the last one.
+ */
+void	ft_revrotate(t_node **head)
+{
+	t_node	*last;
+
+	last = ft_last(*head);
+	ft_at(*head, last->index - 1)->next = NULL;
+	last->next = *head;
+
+	*head = last;
+	(*head)->index = 0;
+	ft_incrind((*head)->next);
+}

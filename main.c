@@ -2,8 +2,8 @@
 
 void printNode(t_node *node)
 {
-	// printf("(%d,%d)->", node->index, node->value);
-	printf("(%d)", node->value);
+	printf("(%d,%d)->", node->index, node->value);
+	// printf("(%d)", node->value);
 }
 
 void printList(t_node *node)
@@ -30,7 +30,8 @@ int main()
 	printf("\n");
 
 	printf("output: ");
-	ft_quicksort(head, 0, 5);
+	// ft_quicksort(head, 0, 5);
+	ft_revrotate(&head);
 	printList(head);
 	printf("\n");
 	return 0;
