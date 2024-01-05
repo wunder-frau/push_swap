@@ -47,16 +47,34 @@ void	ft_insert(t_node *prev, t_node *curr)
 }
 
 /**
- * Returns node at posision.
+ * Returns node at position.
  */
 t_node	*ft_at(t_node *head, int index)
 {
 	t_node	*node;
 
 	node = head;
-	while (node->index != index)
+	while (node->index != index && node->next != NULL)
 	{
 		node = node->next;
 	}
 	return (node);
+}
+
+/**
+ * Get the last element.
+ */
+t_node *ft_last(t_node *node)
+{
+	while (node && node->next != NULL)
+		node = node->next;
+	return (node);
+}
+
+/**
+ * Create node at the end with a value.
+ */
+void	ft_pushback(t_node *head, int value)
+{
+	ft_insert(ft_last(head), ft_newnode(value));
 }
