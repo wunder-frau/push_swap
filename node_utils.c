@@ -60,6 +60,15 @@ void	ft_insert(t_node *prev, t_node *curr)
 	ft_incrind(prev->next);
 }
 
+void	ft_putstr(char *str)
+{
+    int i;
+    i = 0;
+    
+    while(str[i])
+    write(1, &str[i++], 1);    
+}
+
 /**
  * Returns node at position.
  */

@@ -21,7 +21,10 @@ int	ft_partition(t_node *head, int start, int end)
 	ft_swap(ft_at(head, i + 1), ft_at(head, end));
 	return (i + 1);
 }
-
+/**
+ * Initializes arrays for elements less and greater than the pivot, 
+ * then recursively sorts subarrays.
+*/
 void	ft_quicksort(t_node *head, int start, int end)
 {
 	int	pivot;
