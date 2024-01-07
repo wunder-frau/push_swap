@@ -58,5 +58,8 @@ void rra(t_node **stack_a);
 void rrb(t_node **stack_b);
 void rrr(t_node **stack_a, t_node **stack_b);
 
+/* utils.c */
+int    is_digit(char c);
+long int    ft_atoi(const char *str);
 
 #endif
