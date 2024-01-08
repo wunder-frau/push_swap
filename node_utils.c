@@ -27,7 +27,7 @@ t_node	*ft_newnode(int value)
 }
 
 /**
- * Increment eahc index after the node.
+ * Increment each index after the node.
  */
 void	ft_incrind(t_node *tail)
 {
@@ -38,6 +38,11 @@ void	ft_incrind(t_node *tail)
 	}
 }
 
+/**
+ * Decrement the 'index' field of each node 
+ * in the linked list, starting from the 
+ * provided tail node, by 1.
+ */
 void	ft_decrind(t_node *tail)
 {
 	while (tail)
@@ -46,6 +51,7 @@ void	ft_decrind(t_node *tail)
 		tail = tail->next;
 	}
 }
+
 /**
  * Inserts node at any position after prev node.
  * Iteration is used to update indices.
@@ -66,7 +72,7 @@ void	ft_putstr(char *str)
     i = 0;
     
     while(str[i])
-    write(1, &str[i++], 1);    
+    	write(1, &str[i++], 1);    
 }
 
 /**
@@ -94,9 +100,12 @@ t_node *ft_last(t_node *node)
 	return (node);
 }
 
-/**
- * Create node at the end with a value.
+/** 
+ * Inserts a new node with the given value
+ * at the front of the linked list and 
+ * increments the indices of subsequent nodes. 
  */
+
 void	ft_pushfront(t_node **head, int value)
 {
 	t_node *new;
@@ -135,6 +144,11 @@ void	ft_revrotate(t_node **head)
 	ft_incrind((*head)->next);
 }
 
+
+/**
+ * Shift up all elements of stack a by 1.
+ * The first element becomes the last one.
+*/
 void	ft_rotate(t_node **head)
 {
 	t_node	*last;
