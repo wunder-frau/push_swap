@@ -22,6 +22,7 @@
 
 typedef struct s_node
 {
+	int		nb;
 	int		index;
 	int		value;
 	struct	s_node *next;
@@ -58,8 +59,12 @@ void rra(t_node **stack_a);
 void rrb(t_node **stack_b);
 void rrr(t_node **stack_a, t_node **stack_b);
 
+/* stack init */
+t_node  *ft_fillstack(int argc, char **argv);
+
 /* utils.c */
-int    is_digit(char c);
+int    		is_digit(char c);
 long int    ft_atoi(const char *str);
+void		free_stack(t_node **stack);
 
 #endif

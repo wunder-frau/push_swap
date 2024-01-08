@@ -20,8 +20,8 @@ t_node	*ft_newnode(int value)
 	new = (t_node *)malloc(sizeof(t_node));
 	if (!new)
 		return (NULL);
-	new->index = 0;
 	new->value = value;
+	new->index = 0;
 	new->next = NULL;
 	return (new);
 }

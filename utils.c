@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 int is_digit(char c)
 {
     return (c >= '0' && c <= '9');
@@ -25,4 +27,19 @@ long int    ft_atoi(const char *str)
         i++;
     }
     return (nb * isneg);
+}
+
+void	free_stack(t_node **stack)
+{
+	t_node	*tmp;
+
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
 }

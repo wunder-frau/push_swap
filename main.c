@@ -3,7 +3,8 @@
 void printNode(t_node *node)
 {
 	printf("(%d,%d)->", node->index, node->value);
-	// printf("(%d)", node->value);
+	//printf("(%d)", node->value);
+	//printf("\n");
 }
 
 void printList(t_node *node)
@@ -38,18 +39,34 @@ void printList(t_node *node)
 // 	return 0;
 // }
 
+static void print_stack(t_node *stack) {
+    while (stack != NULL) {
+		printf("num: %d\n", stack->value);
+        stack = stack->next;
+    }
+    printf("\n");
+}
+
 int	main(int argc, char **argv)
 {
-	t_node	stack_a;
-	int	stack_b;
+	t_node	*stack_a;
+	t_node	*stack_b;
 
 	int	stack_len;
 	if (argc < 2)
-		return (NULL);
-	//TO DO stack int function
-	//stack_a = ;
+		return (0);
 	stack_b = 0;
-	//TO DO free_stack function
+	stack_a = ft_fillstack(argc, argv);
+	/* check stack_a output */
+	printList(stack_a);
+			printf("\n");
+	/* check quicksort output */
+	printf("output: ");
+			printf("\n");
+	ft_quicksort(stack_a, 0, 5);
+	printList(stack_a);
+
+	/* ---- */
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);
