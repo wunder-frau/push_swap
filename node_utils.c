@@ -9,6 +9,15 @@ void	ft_swap(t_node *a, t_node *b)
 	b->value = tmp;
 }
 
+void	ft_swap_indices(t_node *a, t_node *b)
+{
+	int tmp;
+
+	tmp = a->index;
+	a->index = b->index;
+	b->index = tmp;
+}
+
 /**
  * Inserts node at any position after prev node.
  * Iteration is required to update indices.

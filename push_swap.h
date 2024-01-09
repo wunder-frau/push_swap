@@ -30,6 +30,7 @@ typedef struct s_node
 
 /* node_utils.c */
 void	ft_swap(t_node *a, t_node *b);
+void	ft_swap_indices(t_node *a, t_node *b);
 t_node	*ft_newnode(int value);
 void	ft_incrind(t_node *tail);
 void	ft_decrind(t_node *tail);

@@ -51,10 +51,11 @@ int	main(int argc, char **argv)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
-
 	int	stack_len;
+
 	if (argc < 2)
 		return (0);
+	stack_len = argc - 1;
 	stack_b = 0;
 	stack_a = ft_fillstack(argc, argv);
 	/* check stack_a output */
@@ -62,9 +63,10 @@ int	main(int argc, char **argv)
 			printf("\n");
 	/* check quicksort output */
 	printf("output: ");
-			printf("\n");
-	ft_quicksort(stack_a, 0, 5);
+	printf("\n");
+	ft_quicksort(stack_a, 0, stack_len);
 	printList(stack_a);
+	printf("\n");
 
 	/* ---- */
 	free_stack(&stack_a);
