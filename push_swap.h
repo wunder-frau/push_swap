@@ -22,7 +22,6 @@
 
 typedef struct s_node
 {
-	int		nb;
 	int		index;
 	int		value;
 	struct	s_node *next;
@@ -32,6 +31,7 @@ typedef struct s_node
 void	ft_swap(t_node *a, t_node *b);
 void	ft_swap_indices(t_node *a, t_node *b);
 t_node	*ft_newnode(int value);
+int		ft_distance(t_node *first, t_node *last);
 void	ft_incrind(t_node *tail);
 void	ft_decrind(t_node *tail);
 void	ft_insert(t_node *prev, t_node *curr);
@@ -64,8 +64,8 @@ void rrr(t_node **stack_a, t_node **stack_b);
 t_node  *ft_fillstack(int argc, char **argv);
 
 /* utils.c */
-int    		is_digit(char c);
-long int    ft_atoi(const char *str);
+int			is_digit(char c);
+long int	ft_atoi(const char *str);
 void		free_stack(t_node **stack);
 
 #endif

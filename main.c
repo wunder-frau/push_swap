@@ -1,20 +1,23 @@
 #include "push_swap.h"
 
-void printNode(t_node *node)
+void printNode(t_node *node, int pos)
 {
-	printf("(%d,%d)->", node->index, node->value);
+	printf("{(%d),%d,[%d]}->", pos, node->index, node->value);
 	//printf("(%d)", node->value);
 	//printf("\n");
 }
 
-void printList(t_node *node)
+void printList(t_node *head)
 {
+	t_node *node;
+
+	node = head;
 	while (node != NULL)
 	{
-		printNode(node);
+		printNode(node, ft_distance(head, node));
 		node = node->next;
 	}
-	// printf("NULL");
+	printf("NULL");
 }
 
 // int main()
@@ -55,12 +58,12 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	stack_len = argc - 1;
+	stack_len = argc - 2;
 	stack_b = 0;
 	stack_a = ft_fillstack(argc, argv);
 	/* check stack_a output */
 	printList(stack_a);
-			printf("\n");
+	printf("\n");
 	/* check quicksort output */
 	printf("output: ");
 	printf("\n");

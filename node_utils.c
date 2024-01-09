@@ -61,6 +61,19 @@ void	ft_decrind(t_node *tail)
 	}
 }
 
+int	ft_distance(t_node *first, t_node *last)
+{
+	int	res;
+
+	res = 0;
+	while(first && first != last)
+	{
+		res++;
+		first = first->next;
+	}
+	return(res);
+}
+
 /**
  * Inserts node at any position after prev node.
  * Iteration is used to update indices.
@@ -77,11 +90,11 @@ void	ft_insert(t_node *prev, t_node *curr)
 
 void	ft_putstr(char *str)
 {
-    int i;
-    i = 0;
-    
-    while(str[i])
-    	write(1, &str[i++], 1);    
+	int i;
+	i = 0;
+
+	while(str[i])
+		write(1, &str[i++], 1);
 }
 
 /**
@@ -114,7 +127,6 @@ t_node *ft_last(t_node *node)
  * at the front of the linked list and 
  * increments the indices of subsequent nodes. 
  */
-
 void	ft_pushfront(t_node **head, int value)
 {
 	t_node *new;
