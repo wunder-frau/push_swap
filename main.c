@@ -2,7 +2,7 @@
 
 void printNode(t_node *node, int pos)
 {
-	printf("{(%d),%d,[%d]}->", pos, node->index, node->value);
+	printf("{(%d),[%d],%d}->", pos, node->index, node->value);
 	//printf("(%d)", node->value);
 	//printf("\n");
 }
@@ -67,10 +67,14 @@ int	main(int argc, char **argv)
 	/* check quicksort output */
 	printf("output: ");
 	printf("\n");
-	ft_quicksort(stack_a, 0, stack_len);
+	// ft_quicksort(stack_a, 0, stack_len);
+	// printList(stack_a);
+	// printf("\n");
+
+	/* check micro_sort output */
+	micro_sort(&stack_a);
 	printList(stack_a);
 	printf("\n");
-
 	/* ---- */
 	free_stack(&stack_a);
 	free_stack(&stack_b);

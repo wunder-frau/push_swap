@@ -68,4 +68,7 @@ int			is_digit(char c);
 long int	ft_atoi(const char *str);
 void		free_stack(t_node **stack);
 
+/* micro_sort.c */
+void micro_sort(t_node **stack);
+
 #endif
