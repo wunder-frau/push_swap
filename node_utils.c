@@ -31,8 +31,8 @@ t_node	*ft_newnode(int value)
 		return (NULL);
 	new->value = value;
 	new->index = 0;
-	new->cost_a = -1;
-	new->cost_b = -1;
+	new->cost_a = 0;
+	new->cost_b = 0;
 	new->next = NULL;
 	return (new);
 }
