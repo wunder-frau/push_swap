@@ -15,8 +15,10 @@ void	get_cost(t_node *stack_a, t_node *stack_b)
 		node_b = ft_atpos(stack_b, pos);
 		if (pos > len_b / 2)
 			node_b->cost_b = (len_b - pos) * -1;
-		if (node_b->target_pos > len_a / 2)
-			node_b->target_pos = (len_a - node_b->target_pos) * -1;
+			//TODO check stack_a. push to b
+
+		if (node_b->index > len_a / 2)
+			node_b->cost_a = (len_a - node_b->index) * -1;
 		pos++;
 	}
 }

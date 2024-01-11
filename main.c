@@ -82,6 +82,7 @@ int	main(int argc, char **argv)
 	// printf("\n");
 
 	/* -- get_cost -- */
+	ft_quicksort(stack_b, 0, stack_len);
 	get_cost(stack_a, stack_b);
 	printList(stack_b);
 	/* ---- */
