@@ -39,9 +39,11 @@ int		ft_distance(t_node *first, t_node *last);
 void	ft_incrind(t_node *tail);
 void	ft_decrind(t_node *tail);
 void	ft_insert(t_node *prev, t_node *curr);
-t_node	*ft_at(t_node *head, int index);
+t_node	*ft_atind(t_node *head, int index);
+t_node	*ft_atpos(t_node *head, int pos);
 void	ft_putstr(char *str);
 t_node	*ft_last(t_node *node);
+int		ft_len(t_node *head);
 void	ft_pushfront(t_node **head, int value);
 void	ft_pushback(t_node *head, int value);
 void	ft_revrotate(t_node **head);
@@ -69,14 +71,14 @@ t_node  *ft_fillstack(int argc, char **argv);
 
 /* utils.c */
 int			is_digit(char c);
-long int	ft_atoi(const char *str);
+long int	ft_atindoi(const char *str);
 void		free_stack(t_node **stack);
 
 /* micro_sort.c */
 void	micro_sort(t_node **stack);
 
 /* cost.c */
-void	get_cost(t_node **stack_a, t_node **stack_b);
-int	get_stack_size(t_node	*stack);
+void	get_cost(t_node *stack_a, t_node *stack_b);
+int		get_stack_size(t_node	*stack);
 
 #endif

@@ -62,8 +62,13 @@ int	main(int argc, char **argv)
 	stack_b = ft_fillstack(argc, argv);
 	stack_a = ft_fillstack(argc, argv);
 	/* check stack_a output */
-//	printList(stack_a);
-	//printf("\n");
+	// printList(stack_a);
+	// printf("\n");
+	int j = ft_len(stack_a);
+	printf("%d", j);
+	printf("\n");
+	printList(stack_a);
+	printf("\n");
 	/* check quicksort output */
 	// printf("output: ");
 	// printf("\n");
@@ -77,8 +82,8 @@ int	main(int argc, char **argv)
 	// printf("\n");
 
 	/* -- get_cost -- */
-	get_cost(&stack_a, &stack_b);
-	printList(stack_a);
+	get_cost(stack_a, stack_b);
+	printList(stack_b);
 	/* ---- */
 	free_stack(&stack_a);
 	free_stack(&stack_b);

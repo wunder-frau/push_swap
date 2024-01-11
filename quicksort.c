@@ -6,19 +6,19 @@ int	ft_partition(t_node *head, int start, int end)
 	int i;
 	int j;
 
-	pivot = ft_at(head, end)->value;
+	pivot = ft_atind(head, end)->value;
 	i = start - 1;
 	j = start;
 	while (j <= end - 1)
 	{
-		if (ft_at(head, j)->value < pivot)
+		if (ft_atind(head, j)->value < pivot)
 		{
 			i++;
-			ft_swap_indices(ft_at(head, i), ft_at(head, j));
+			ft_swap_indices(ft_atind(head, i), ft_atind(head, j));
 		}
 		j++;
 	}
-	ft_swap_indices(ft_at(head, i + 1), ft_at(head, end));
+	ft_swap_indices(ft_atind(head, i + 1), ft_atind(head, end));
 	return (i + 1);
 }
 

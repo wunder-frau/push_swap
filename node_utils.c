@@ -31,6 +31,8 @@ t_node	*ft_newnode(int value)
 		return (NULL);
 	new->value = value;
 	new->index = 0;
+	new->cost_a = -1;
+	new->cost_b = -1;
 	new->next = NULL;
 	return (new);
 }
@@ -100,13 +102,28 @@ void	ft_putstr(char *str)
 /**
  * Returns node at position.
  */
-t_node	*ft_at(t_node *head, int index)
+t_node	*ft_atind(t_node *head, int index)
 {
 	t_node	*node;
 
 	node = head;
 	while (node->index != index && node->next != NULL)
 	{
+		node = node->next;
+	}
+	return (node);
+}
+
+t_node	*ft_atpos(t_node *head, int pos)
+{
+	t_node	*node;
+	int		i;
+
+	i = 0;
+	node = head;
+	while (node && i != pos)
+	{
+		i++;
 		node = node->next;
 	}
 	return (node);
@@ -120,6 +137,13 @@ t_node *ft_last(t_node *node)
 	while (node && node->next != NULL)
 		node = node->next;
 	return (node);
+}
+
+int	ft_len(t_node *head)
+{
+	if (!head)
+		return (0);
+	return (ft_distance(head, ft_last(head)) + 1);
 }
 
 /** 
@@ -157,7 +181,7 @@ void	ft_revrotate(t_node **head)
 	last = ft_last(*head);
 	if(*head == NULL || last == *head)
 		return ;
-	ft_at(*head, last->index - 1)->next = NULL;
+	ft_atind(*head, last->index - 1)->next = NULL;
 	last->next = *head;
 
 	*head = last;

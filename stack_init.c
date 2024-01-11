@@ -12,7 +12,7 @@ t_node *ft_fillstack(int argc, char **argv)
 
 	while (i < argc)
 	{
-		nb = ft_atoi(argv[i]);
+		nb = ft_atindoi(argv[i]);
 		if (i == 1)
 			stack_a = ft_newnode((int)nb);
 		else

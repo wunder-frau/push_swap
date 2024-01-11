@@ -5,7 +5,7 @@ int is_digit(char c)
 	return (c >= '0' && c <= '9');
 }
 
-long int	ft_atoi(const char *str)
+long int	ft_atindoi(const char *str)
 {
 	long int	nb;
 	int			isneg;
