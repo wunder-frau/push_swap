@@ -24,6 +24,10 @@ typedef struct s_node
 {
 	int		index;
 	int		value;
+	int		pos;
+	int		target_pos;
+	int		cost_a;
+	int		cost_b;
 	struct	s_node *next;
 } t_node;
 
@@ -69,6 +73,10 @@ long int	ft_atoi(const char *str);
 void		free_stack(t_node **stack);
 
 /* micro_sort.c */
-void micro_sort(t_node **stack);
+void	micro_sort(t_node **stack);
+
+/* cost.c */
+void	get_cost(t_node **stack_a, t_node **stack_b);
+int	get_stack_size(t_node	*stack);
 
 #endif

@@ -43,3 +43,18 @@ void	free_stack(t_node **stack)
 	}
 	*stack = NULL;
 }
+
+int	get_stack_size(t_node	*stack)
+{
+	int	size;
+
+	size = 0;
+	if (!stack)
+		return (0);
+	while (stack)
+	{
+		stack = stack->next;
+		size++;
+	}
+	return (size);
+}
