@@ -1,4 +1,4 @@
-SRCS = node_utils.c quicksort.c actions.c stack_init.c micro_sort.c cost.c utils.c
+SRCS = actions.c cost.c io_utils.c main.c micro_sort.c node_utils.c quicksort.c
 
 OBJ = $(SRCS:.c=.o)
 NAME = push_swap.a

@@ -1,5 +1,14 @@
 #include "push_swap.h"
 
+void	put_str(char *str)
+{
+	int i;
+	i = 0;
+
+	while(str[i])
+		write(1, &str[i++], 1);
+}
+
 int is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
@@ -29,32 +38,24 @@ long int	at_indoi(const char *str)
 	return (nb * isneg);
 }
 
-void	free_stack(t_node **stack)
+t_node *fill_lst(int argc, char **argv)
 {
-	t_node	*tmp;
+	t_node		*head;
+	long int	nb;
+	int			i;
 
-	if (!stack || !(*stack))
-		return ;
-	while (*stack)
+	head = NULL;
+	nb = 0;
+	i = 1;
+
+	while (i < argc)
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
+		nb = at_indoi(argv[i]);
+		if (i == 1)
+			head = new_node((int)nb);
+		else
+			push_back(head, (int)nb);
+		i++;
 	}
-	*stack = NULL;
-}
-
-int	get_stack_size(t_node	*stack)
-{
-	int	size;
-
-	size = 0;
-	if (!stack)
-		return (0);
-	while (stack)
-	{
-		stack = stack->next;
-		size++;
-	}
-	return (size);
+	return (head);
 }

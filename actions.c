@@ -37,38 +37,38 @@ void pb(t_node **stack_b, t_node *stack_a)
 
 void ra(t_node **stack_a)
 {
-	forward_rotate(stack_a);
+	rotate_back(stack_a);
 	put_str("ra\n");
 }
 
 void rb(t_node **stack_b)
 {
-	forward_rotate(stack_b);
+	rotate_back(stack_b);
 	put_str("rb\n");
 }
 
 void rr(t_node **stack_a, t_node **stack_b)
 {
-	forward_rotate(stack_a);
-	forward_rotate(stack_b);
+	rotate_back(stack_a);
+	rotate_back(stack_b);
 	put_str("rr\n");
 }
 
 void rra(t_node **stack_a)
 {
-	reverse_rotate(stack_a);
+	rotate_front(stack_a);
 	put_str("rra\n");
 }
 
 void rrb(t_node **stack_b)
 {
-	reverse_rotate(stack_b);
+	rotate_front(stack_b);
 	put_str("rrb\n");
 }
 
 void rrr(t_node **stack_a, t_node **stack_b)
 {
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
+	rotate_front(stack_a);
+	rotate_front(stack_b);
 	put_str("rrr\n");
 }

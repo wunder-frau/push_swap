@@ -37,6 +37,24 @@ t_node	*new_node(int value)
 }
 
 /**
+ * Free linked list.
+ */
+void	free_lst(t_node **head)
+{
+	t_node	*tmp;
+
+	if (!head || !(*head))
+		return ;
+	while (*head)
+	{
+		tmp = (*head)->next;
+		free(*head);
+		*head = tmp;
+	}
+	*head = NULL;
+}
+
+/**
  * Increment each index after the node.
  */
 void	incr_indices(t_node *tail)
@@ -88,15 +106,6 @@ void	insert(t_node *prev, t_node *curr)
 	prev->next = curr;
 	curr->index = prev->index;
 	incr_indices(prev->next);
-}
-
-void	put_str(char *str)
-{
-	int i;
-	i = 0;
-
-	while(str[i])
-		write(1, &str[i++], 1);
 }
 
 /**
@@ -175,7 +184,7 @@ void	push_back(t_node *head, int value)
 /**
  * Move the last element to the front.
  */
-void	reverse_rotate(t_node **head)
+void	rotate_front(t_node **head)
 {
 	t_node	*last;
 
@@ -190,11 +199,10 @@ void	reverse_rotate(t_node **head)
 	incr_indices((*head)->next);
 }
 
-
 /**
  * Move first element to the end.
  */
-void	forward_rotate(t_node **head)
+void	rotate_back(t_node **head)
 {
 	t_node	*last;
 	t_node	*temp;

@@ -1,5 +1,9 @@
 #include "push_swap.h"
 
+/**
+ * Lomuto partition scheme.
+ * Sort (a portion of an) list's indices preserving nodes positions and their values.
+ */
 int	partition(t_node *head, int start, int end)
 {
 	int pivot;
@@ -23,8 +27,7 @@ int	partition(t_node *head, int start, int end)
 }
 
 /**
- * Initializes arrays for elements less and greater than the pivot, 
- * then recursively sorts subarrays.
+ * Quicksort indices but preserve nodes positisions and their values.
  */
 void	quicksort(t_node *head, int start, int end)
 {
