@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_node *ft_fillstack(int argc, char **argv)
+t_node *fillstack(int argc, char **argv)
 {
 	t_node		*stack_a;
 	long int	nb;
@@ -12,11 +12,11 @@ t_node *ft_fillstack(int argc, char **argv)
 
 	while (i < argc)
 	{
-		nb = ft_atindoi(argv[i]);
+		nb = at_indoi(argv[i]);
 		if (i == 1)
-			stack_a = ft_newnode((int)nb);
+			stack_a = new_node((int)nb);
 		else
-			ft_pushback(stack_a, (int)nb);
+			push_back(stack_a, (int)nb);
 		i++;
 	}
 	return (stack_a);

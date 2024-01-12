@@ -14,7 +14,7 @@ void printList(t_node *head)
 	node = head;
 	while (node != NULL)
 	{
-		printNode(node, ft_distance(head, node));
+		printNode(node, distance(head, node));
 		node = node->next;
 	}
 	printf("NULL");
@@ -22,20 +22,20 @@ void printList(t_node *head)
 
 // int main()
 // {
-// 	t_node *head = ft_newnode(3);
-// 	ft_pushback(head, 1);
-// 	ft_pushback(head, 4);
-// 	ft_pushback(head, 0);
-// 	ft_pushback(head, 2);
-// 	ft_pushback(head, 5);
+// 	t_node *head = new_node(3);
+// 	push_back(head, 1);
+// 	push_back(head, 4);
+// 	push_back(head, 0);
+// 	push_back(head, 2);
+// 	push_back(head, 5);
 
 // 	printf("input: ");
 // 	printList(head);
 // 	printf("\n");
 
 // 	printf("output: ");
-// 	ft_quicksort(head, 0, 6);
-// 	//ft_revrotate(&head);
+// 	quicksort(head, 0, 6);
+// 	//reverse_rotate(&head);
 // 	printList(head);
 // 	//ra(&head);
 // 	printf("\n");
@@ -59,12 +59,12 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	stack_len = argc - 2;
-	stack_b = ft_fillstack(argc, argv);
-	stack_a = ft_fillstack(argc, argv);
+	stack_b = fillstack(argc, argv);
+	stack_a = fillstack(argc, argv);
 	/* check stack_a output */
 	// printList(stack_a);
 	// printf("\n");
-	int j = ft_len(stack_a);
+	int j = len(stack_a);
 	printf("%d", j);
 	printf("\n");
 	printList(stack_a);
@@ -72,7 +72,7 @@ int	main(int argc, char **argv)
 	/* check quicksort output */
 	// printf("output: ");
 	// printf("\n");
-	// ft_quicksort(stack_a, 0, stack_len);
+	// quicksort(stack_a, 0, stack_len);
 	// printList(stack_a);
 	// printf("\n");
 
@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 	// printf("\n");
 
 	/* -- get_cost -- */
-	ft_quicksort(stack_b, 0, stack_len);
+	quicksort(stack_b, 0, stack_len);
 	get_cost(stack_a, stack_b);
 	printList(stack_b);
 	/* ---- */

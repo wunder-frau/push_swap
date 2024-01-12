@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	ft_swap(t_node *a, t_node *b)
+void	swap_values(t_node *a, t_node *b)
 {
 	int tmp;
 
@@ -9,7 +9,7 @@ void	ft_swap(t_node *a, t_node *b)
 	b->value = tmp;
 }
 
-void	ft_swap_indices(t_node *a, t_node *b)
+void	swap_indices(t_node *a, t_node *b)
 {
 	int tmp;
 
@@ -19,10 +19,9 @@ void	ft_swap_indices(t_node *a, t_node *b)
 }
 
 /**
- * Inserts node at any position after prev node.
- * Iteration is required to update indices.
+ * Generates self-existing new node, i.e. head node.
  */
-t_node	*ft_newnode(int value)
+t_node	*new_node(int value)
 {
 	t_node	*new;
 
@@ -40,7 +39,7 @@ t_node	*ft_newnode(int value)
 /**
  * Increment each index after the node.
  */
-void	ft_incrind(t_node *tail)
+void	incr_indices(t_node *tail)
 {
 	while (tail)
 	{
@@ -50,11 +49,9 @@ void	ft_incrind(t_node *tail)
 }
 
 /**
- * Decrement the 'index' field of each node 
- * in the linked list, starting from the 
- * provided tail node, by 1.
+ * Decrement each index after the node.
  */
-void	ft_decrind(t_node *tail)
+void	decr_indices(t_node *tail)
 {
 	while (tail)
 	{
@@ -63,7 +60,10 @@ void	ft_decrind(t_node *tail)
 	}
 }
 
-int	ft_distance(t_node *first, t_node *last)
+/**
+ * Distance between two nodes.
+ */
+int	distance(t_node *first, t_node *last)
 {
 	int	res;
 
@@ -78,19 +78,19 @@ int	ft_distance(t_node *first, t_node *last)
 
 /**
  * Inserts node at any position after prev node.
- * Iteration is used to update indices.
+ * Iteration is used to update the subsequent nodes indices.
  */
-void	ft_insert(t_node *prev, t_node *curr)
+void	insert(t_node *prev, t_node *curr)
 {
 	if (prev == NULL || curr == NULL)
 		return;
 	curr->next = prev->next;
 	prev->next = curr;
 	curr->index = prev->index;
-	ft_incrind(prev->next);
+	incr_indices(prev->next);
 }
 
-void	ft_putstr(char *str)
+void	put_str(char *str)
 {
 	int i;
 	i = 0;
@@ -102,7 +102,7 @@ void	ft_putstr(char *str)
 /**
  * Returns node at position.
  */
-t_node	*ft_atind(t_node *head, int index)
+t_node	*at_ind(t_node *head, int index)
 {
 	t_node	*node;
 
@@ -114,7 +114,7 @@ t_node	*ft_atind(t_node *head, int index)
 	return (node);
 }
 
-t_node	*ft_atpos(t_node *head, int pos)
+t_node	*at_pos(t_node *head, int pos)
 {
 	t_node	*node;
 	int		i;
@@ -132,84 +132,84 @@ t_node	*ft_atpos(t_node *head, int pos)
 /**
  * Get the last element.
  */
-t_node *ft_last(t_node *node)
+t_node *back(t_node *node)
 {
 	while (node && node->next != NULL)
 		node = node->next;
 	return (node);
 }
 
-int	ft_len(t_node *head)
+/**
+ * Get length.
+ */
+int	len(t_node *head)
 {
 	if (!head)
 		return (0);
-	return (ft_distance(head, ft_last(head)) + 1);
+	return (distance(head, back(head)) + 1);
 }
 
 /** 
- * Inserts a new node with the given value
- * at the front of the linked list and 
- * increments the indices of subsequent nodes. 
+ * Create a node at the front with a value.
+ * Iteration is used to update the subsequent nodes indices.
  */
-void	ft_pushfront(t_node **head, int value)
+void	push_front(t_node **head, int value)
 {
 	t_node *new;
 
-	new = ft_newnode(value);
+	new = new_node(value);
 	if (head || new)
 		new->next = *head;
 	*head = new;
-	ft_incrind(new->next);
+	incr_indices(new->next);
 }
 
 /**
  * Create node at the end with a value.
  */
-void	ft_pushback(t_node *head, int value)
+void	push_back(t_node *head, int value)
 {
-	ft_insert(ft_last(head), ft_newnode(value));
+	insert(back(head), new_node(value));
 }
 
 /**
- * Shift up all elements of linked list a by 1.
- * The first element becomes the last one.
+ * Move the last element to the front.
  */
-void	ft_revrotate(t_node **head)
+void	reverse_rotate(t_node **head)
 {
 	t_node	*last;
 
-	last = ft_last(*head);
+	last = back(*head);
 	if(*head == NULL || last == *head)
 		return ;
-	ft_atind(*head, last->index - 1)->next = NULL;
+	at_ind(*head, last->index - 1)->next = NULL;
 	last->next = *head;
 
 	*head = last;
 	(*head)->index = 0;
-	ft_incrind((*head)->next);
+	incr_indices((*head)->next);
 }
 
 
 /**
- * Shift up all elements of stack a by 1.
- * The first element becomes the last one.
-*/
-void	ft_rotate(t_node **head)
+ * Move first element to the end.
+ */
+void	forward_rotate(t_node **head)
 {
 	t_node	*last;
 	t_node	*temp;
-	int	last_ind;
+	int		last_ind;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return ;
 
 	temp = *head;
 	*head = (*head)->next;
-	last = ft_last(*head);
+	last = back(*head);
 	last_ind = last->index;
 	temp->next = NULL;
 	last->next = temp;
 
-	ft_decrind(*head);
-	ft_last(*head)->index = last_ind;
+	decr_indices(*head);
+	back(*head)->index = last_ind;
 }

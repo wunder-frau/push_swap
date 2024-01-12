@@ -1,24 +1,24 @@
 #include "push_swap.h"
 
-int	ft_partition(t_node *head, int start, int end)
+int	partition(t_node *head, int start, int end)
 {
 	int pivot;
 	int i;
 	int j;
 
-	pivot = ft_atind(head, end)->value;
+	pivot = at_ind(head, end)->value;
 	i = start - 1;
 	j = start;
 	while (j <= end - 1)
 	{
-		if (ft_atind(head, j)->value < pivot)
+		if (at_ind(head, j)->value < pivot)
 		{
 			i++;
-			ft_swap_indices(ft_atind(head, i), ft_atind(head, j));
+			swap_indices(at_ind(head, i), at_ind(head, j));
 		}
 		j++;
 	}
-	ft_swap_indices(ft_atind(head, i + 1), ft_atind(head, end));
+	swap_indices(at_ind(head, i + 1), at_ind(head, end));
 	return (i + 1);
 }
 
@@ -26,14 +26,14 @@ int	ft_partition(t_node *head, int start, int end)
  * Initializes arrays for elements less and greater than the pivot, 
  * then recursively sorts subarrays.
  */
-void	ft_quicksort(t_node *head, int start, int end)
+void	quicksort(t_node *head, int start, int end)
 {
 	int	pivot;
 
 	if (start < end)
 	{
-		pivot = ft_partition(head, start, end);
-		ft_quicksort(head, start, pivot - 1);
-		ft_quicksort(head, pivot + 1, end);
+		pivot = partition(head, start, end);
+		quicksort(head, start, pivot - 1);
+		quicksort(head, pivot + 1, end);
 	}
 }

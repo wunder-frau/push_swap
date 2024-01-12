@@ -11,11 +11,11 @@
 */
 void micro_sort(t_node **stack)
 {
-	if((*stack)->value > (*stack)->next->value && (*stack)->value > ft_last(*stack)->value)
+	if((*stack)->value > (*stack)->next->value && (*stack)->value > back(*stack)->value)
 		ra(stack);
 	if((*stack)->value > (*stack)->next->value)
 		sa(*stack);
-	if((*stack)->next->value > ft_last(*stack)->value)
+	if((*stack)->next->value > back(*stack)->value)
 		rra(stack);
 	if((*stack)->value > (*stack)->next->value)
 		sa(*stack);

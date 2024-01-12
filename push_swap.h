@@ -16,41 +16,38 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-/*
-# include <limits.h>
-*/
+// # include <limits.h>
 
 typedef struct s_node
 {
 	int		index;
 	int		value;
-	int		target_pos;
 	int		cost_a;
 	int		cost_b;
 	struct	s_node *next;
 } t_node;
 
 /* node_utils.c */
-void	ft_swap(t_node *a, t_node *b);
-void	ft_swap_indices(t_node *a, t_node *b);
-t_node	*ft_newnode(int value);
-int		ft_distance(t_node *first, t_node *last);
-void	ft_incrind(t_node *tail);
-void	ft_decrind(t_node *tail);
-void	ft_insert(t_node *prev, t_node *curr);
-t_node	*ft_atind(t_node *head, int index);
-t_node	*ft_atpos(t_node *head, int pos);
-void	ft_putstr(char *str);
-t_node	*ft_last(t_node *node);
-int		ft_len(t_node *head);
-void	ft_pushfront(t_node **head, int value);
-void	ft_pushback(t_node *head, int value);
-void	ft_revrotate(t_node **head);
-void	ft_rotate(t_node **head);
+void	swap_values(t_node *a, t_node *b);
+void	swap_indices(t_node *a, t_node *b);
+t_node	*new_node(int value);
+int		distance(t_node *first, t_node *last);
+void	incr_indices(t_node *tail);
+void	decr_indices(t_node *tail);
+void	insert(t_node *prev, t_node *curr);
+t_node	*at_ind(t_node *head, int index);
+t_node	*at_pos(t_node *head, int pos);
+void	put_str(char *str);
+t_node	*back(t_node *node);
+int		len(t_node *head);
+void	push_front(t_node **head, int value);
+void	push_back(t_node *head, int value);
+void	reverse_rotate(t_node **head);
+void	forward_rotate(t_node **head);
 
 /* quicksort.c */
-int		ft_partition(t_node *head, int start, int end);
-void	ft_quicksort(t_node *head, int start, int end);
+int		partition(t_node *head, int start, int end);
+void	quicksort(t_node *head, int start, int end);
 
 /* actions.c */
 void sa(t_node *stack_a);
@@ -66,11 +63,11 @@ void rrb(t_node **stack_b);
 void rrr(t_node **stack_a, t_node **stack_b);
 
 /* stack init */
-t_node  *ft_fillstack(int argc, char **argv);
+t_node  *fillstack(int argc, char **argv);
 
 /* utils.c */
 int			is_digit(char c);
-long int	ft_atindoi(const char *str);
+long int	at_indoi(const char *str);
 void		free_stack(t_node **stack);
 
 /* micro_sort.c */
@@ -78,6 +75,5 @@ void	micro_sort(t_node **stack);
 
 /* cost.c */
 void	get_cost(t_node *stack_a, t_node *stack_b);
-int		get_stack_size(t_node	*stack);
 
 #endif
