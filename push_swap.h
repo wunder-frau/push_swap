@@ -65,7 +65,7 @@ void		rrr(t_node **stack_a, t_node **stack_b);
 /* io_utils.c */
 void		put_str(char *str);
 int			is_digit(char c);
-long int	at_indoi(const char *str);
+long int	ft_atoi(const char *str);
 t_node		*fill_lst(int argc, char **argv);
 
 /* micro_sort.c */

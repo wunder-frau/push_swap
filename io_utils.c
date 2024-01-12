@@ -14,7 +14,7 @@ int is_digit(char c)
 	return (c >= '0' && c <= '9');
 }
 
-long int	at_indoi(const char *str)
+long int	ft_atoi(const char *str)
 {
 	long int	nb;
 	int			isneg;
@@ -50,7 +50,7 @@ t_node *fill_lst(int argc, char **argv)
 
 	while (i < argc)
 	{
-		nb = at_indoi(argv[i]);
+		nb = ft_atoi(argv[i]);
 		if (i == 1)
 			head = new_node((int)nb);
 		else

@@ -54,7 +54,9 @@ int	main(int argc, char **argv)
 	/* -- get_cost -- */
 	quicksort(stack_b, 0, stack_len);
 	get_cost(stack_a, stack_b);
-	print_lst(stack_b);
+	print_lst(stack_a);
+		printf("\n");
+		print_lst(stack_b);
 	/* ---- */
 	free_lst(&stack_a);
 	free_lst(&stack_b);
