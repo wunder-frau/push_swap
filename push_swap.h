@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-// # include <limits.h>
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -73,5 +73,6 @@ void		micro_sort(t_node **stack);
 
 /* cost.c */
 void		get_cost(t_node *stack_a, t_node *stack_b);
+void		do_cheapest_move(t_node **stack_a, t_node **stack_b);
 
 #endif
