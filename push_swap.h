@@ -54,7 +54,7 @@ void		sa(t_node *stack_a);
 void		sb(t_node *stack_b);
 void		ss(t_node *stack_a, t_node *stack_b);
 void		pa(t_node **stack_a, t_node *stack_b);
-void		pb(t_node **stack_b, t_node *stack_a);
+void		pb(t_node **stack_b, t_node **stack_a);
 void		ra(t_node **stack_a);
 void		rb(t_node **stack_b);
 void		rr(t_node **stack_a, t_node **stack_b);
@@ -74,5 +74,8 @@ void		micro_sort(t_node **stack);
 /* cost.c */
 void		get_cost(t_node *stack_a, t_node *stack_b);
 void		do_cheapest_move(t_node **stack_a, t_node **stack_b);
+
+/* sort.c */
+void		push_all_to_b(t_node **stack_a, t_node **stack_b);
 
 #endif

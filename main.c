@@ -29,16 +29,20 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	stack_len = argc - 2;
-	stack_b = fill_lst(argc, argv);
 	stack_a = fill_lst(argc, argv);
+	stack_b = 0;
 	/* check stack_a output */
 	// print_lst(stack_a);
 	// printf("\n");
-	int j = len(stack_a);
-	printf("%d", j);
+	//int j = len(stack_a);
+	// printf("%d", j);
+	// printf("\n");
+//	print_lst(stack_a);
 	printf("\n");
-	print_lst(stack_a);
+	push_all_to_b(&stack_a, &stack_b);
+	print_lst(stack_b);
 	printf("\n");
+	//print_lst(stack_b);
 	/* check quicksort output */
 	// printf("output: ");
 	// printf("\n");
@@ -52,12 +56,13 @@ int	main(int argc, char **argv)
 	// printf("\n");
 
 	/* -- get_cost -- */
-	quicksort(stack_b, 0, stack_len);
-	//get_cost(stack_a, stack_b);
-	do_cheapest_move(&stack_a, &stack_b);
-	print_lst(stack_a);
-		printf("\n");
-		print_lst(stack_b);
+	// quicksort(stack_b, 0, stack_len);
+	// get_cost(stack_a, stack_b);
+	// do_cheapest_move(&stack_a, &stack_b);
+	// print_lst(stack_a);
+	// 	printf("\n");
+	// 			print_lst(stack_b);
+		//print_lst(stack_b);
 	/* ---- */
 	free_lst(&stack_a);
 	free_lst(&stack_b);

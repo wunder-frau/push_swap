@@ -27,11 +27,11 @@ void pa(t_node **stack_a, t_node *stack_b)
 	put_str("pa\n");
 }
 
-void pb(t_node **stack_b, t_node *stack_a)
+void pb(t_node **stack_b, t_node **stack_a)
 {
-	if (stack_a == NULL)
+	if ((*stack_a) == NULL)
 		return ;
-	push_front(stack_b, stack_a->value);
+	push_front(stack_b, (*stack_a)->value);
 	put_str("pb\n");
 }
 
