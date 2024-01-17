@@ -32,17 +32,20 @@ int	main(int argc, char **argv)
 	stack_a = fill_lst(argc, argv);
 	stack_b = 0;
 	/* check stack_a output */
-	// print_lst(stack_a);
-	// printf("\n");
+	print_lst(stack_a);
+	printf("--->stack a\n");
+	print_lst(stack_b);
+	printf("--->stack b\n");
 	//int j = len(stack_a);
 	// printf("%d", j);
-	// printf("\n");
+	printf("\n");
 //	print_lst(stack_a);
 	printf("\n");
 	push_all_to_b(&stack_a, &stack_b);
+	print_lst(stack_a);
+	printf("--->pushed in A\n");
 	print_lst(stack_b);
-	printf("\n");
-	//print_lst(stack_b);
+	printf("--->pushed in B\n");
 	/* check quicksort output */
 	// printf("output: ");
 	// printf("\n");

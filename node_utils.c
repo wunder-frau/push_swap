@@ -176,6 +176,19 @@ void	push_front(t_node **head, int value)
 	incr_indices(new->next);
 }
 
+// void	push_front(t_node **src, t_node **dest)
+// {
+// 	t_node	*tmp;
+
+// 	if (*src == NULL)
+// 		return ;
+// 	tmp = (*src)->next;
+// 	(*src)->next = *dest;
+// 	*dest = *src;
+// 	*src = tmp;
+// 	incr_indices(tmp->next);
+// }
+
 /**
  * Create node at the end with a value.
  */
