@@ -41,10 +41,10 @@ t_node		*at_pos(t_node *head, int pos);
 t_node		*back(t_node *node);
 int			len(t_node *head);
 void		push_front(t_node **head, int value);
-// void	push_front(t_node **src, t_node **dest);
 void		push_back(t_node *head, int value);
 void		rotate_front(t_node **head);
 void		rotate_back(t_node **head);
+void		pop_front(t_node **head);
 
 /* quicksort.c */
 int			partition(t_node *head, int start, int end);

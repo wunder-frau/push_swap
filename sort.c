@@ -23,6 +23,7 @@ void	push_all_to_b(t_node **stack_a, t_node **stack_b)
 	while (stack_len - pushed > 3)
 	{
 		pb(stack_b, *stack_a);
+		pop_front(stack_a);
 		pushed++;
 	}
 }

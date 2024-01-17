@@ -176,19 +176,6 @@ void	push_front(t_node **head, int value)
 	incr_indices(new->next);
 }
 
-// void	push_front(t_node **src, t_node **dest)
-// {
-// 	t_node	*tmp;
-
-// 	if (*src == NULL)
-// 		return ;
-// 	tmp = (*src)->next;
-// 	(*src)->next = *dest;
-// 	*dest = *src;
-// 	*src = tmp;
-// 	incr_indices(tmp->next);
-// }
-
 /**
  * Create node at the end with a value.
  */
@@ -236,4 +223,19 @@ void	rotate_back(t_node **head)
 
 	decr_indices(*head);
 	back(*head)->index = last_ind;
+}
+
+/**
+ *  Delete the front element.
+ */
+void	pop_front(t_node **head)
+{
+	t_node	*front;
+	
+	if (*head == NULL || (*head)->next == NULL)
+		return ;
+	front = *head;
+	*head = (*head)->next;
+	decr_indices(*head);
+	free(front);
 }
