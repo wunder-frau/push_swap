@@ -78,5 +78,7 @@ void		do_cheapest_move(t_node **stack_a, t_node **stack_b);
 
 /* sort.c */
 void		push_all_to_b(t_node **stack_a, t_node **stack_b);
+void		shift_stack(t_node **stack_a);
+void	sort(t_node **stack_a, t_node **stack_b);
 
 #endif
