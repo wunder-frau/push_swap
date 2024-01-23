@@ -19,19 +19,21 @@ void ss(t_node *stack_a, t_node *stack_b)
 	put_str("ss\n");
 }
 
-void pa(t_node **stack_a, t_node *stack_b)
+void pa(t_node **stack_a, t_node **stack_b)
 {
 	if (stack_b == NULL)
 		return ;
-	push_front(stack_a, stack_b->value);
+	push_front(stack_a, (*stack_b)->value);
+	pop_front(stack_b);
 	put_str("pa\n");
 }
 
-void pb(t_node **stack_b, t_node *stack_a)
+void pb(t_node **stack_b, t_node **stack_a)
 {
 	if (stack_a == NULL)
 		return ;
-	push_front(stack_b, stack_a->value);
+	push_front(stack_b, (*stack_a)->value);
+	pop_front(stack_a);
 	put_str("pb\n");
 }
 

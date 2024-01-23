@@ -161,7 +161,7 @@ int	len(t_node *head)
 	return (distance(head, back(head)) + 1);
 }
 
-/** 
+/**
  * Create a node at the front with a value.
  * Iteration is used to update the subsequent nodes indices.
  */

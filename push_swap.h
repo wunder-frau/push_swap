@@ -54,8 +54,8 @@ void		quicksort(t_node *head, int start, int end);
 void		sa(t_node *stack_a);
 void		sb(t_node *stack_b);
 void		ss(t_node *stack_a, t_node *stack_b);
-void		pa(t_node **stack_a, t_node *stack_b);
-void		pb(t_node **stack_b, t_node *stack_a);
+void		pa(t_node **stack_a, t_node **stack_b);
+void		pb(t_node **stack_b, t_node **stack_a);
 void		ra(t_node **stack_a);
 void		rb(t_node **stack_b);
 void		rr(t_node **stack_a, t_node **stack_b);
@@ -81,4 +81,9 @@ void		push_all_to_b(t_node **stack_a, t_node **stack_b);
 void		shift_stack(t_node **stack_a);
 void	sort(t_node **stack_a, t_node **stack_b);
 
+/* move.c */
+void	move(t_node **a, t_node **b, int cost_a, int cost_b);
+
+
+int	is_sorted(t_node *stack);
 #endif

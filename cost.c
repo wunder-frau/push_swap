@@ -48,6 +48,6 @@ void	do_cheapest_move(t_node **stack_a, t_node **stack_b)
 		}
 		tmp = tmp->next;
 	}
-	get_cost(*stack_a, *stack_b);
-	// do_move(stack_a, stack_b, cost_a, cost_b);
+	//get_cost(*stack_a, *stack_b);
+	move(stack_a, stack_b, cost_a, cost_b);
 }

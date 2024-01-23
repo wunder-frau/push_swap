@@ -13,8 +13,8 @@ void	push_all_to_b(t_node **stack_a, t_node **stack_b)
 	{
 		if ((*stack_a)->index <= stack_len / 2)
 		{
-			pb(stack_b, *stack_a);
-			pop_front(stack_a);
+			pb(stack_b, stack_a);
+			// pop_front(stack_a);
 			pushed++;
 		}
 		else
@@ -23,8 +23,8 @@ void	push_all_to_b(t_node **stack_a, t_node **stack_b)
 	}
 	while (stack_len - pushed > 3)
 	{
-		pb(stack_b, *stack_a);
-		pop_front(stack_a);
+		pb(stack_b, stack_a);
+		// pop_front(stack_a);
 		pushed++;
 	}
 }
@@ -58,15 +58,16 @@ void	sort(t_node **stack_a, t_node **stack_b)
 {
 	int	stack_len;
 
-	stack_len = len(*stack_a);
 	push_all_to_b(stack_a, stack_b);
 	micro_sort(stack_a);
-	while (*stack_b)
+	stack_len = len(*stack_b);
+	while ((*stack_b)->next != NULL)
+		//while (*stack_b)
 	{
-		//quicksort(*stack_a, 0, stack_len);
+		quicksort(*stack_b, 0, stack_len);
 		get_cost(*stack_a, *stack_b);
 		do_cheapest_move(stack_a, stack_b);
 	}
-	// if (!is_sorted(*stack_a))
- 	shift_stack(stack_a);
+	if (!is_sorted(*stack_a))
+		shift_stack(stack_a);
 }
