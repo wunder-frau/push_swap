@@ -232,7 +232,7 @@ void	pop_front(t_node **head)
 {
 	t_node	*front;
 	
-	if (*head == NULL || (*head)->next == NULL)
+	if (*head == NULL)
 		return ;
 	front = *head;
 	*head = (*head)->next;

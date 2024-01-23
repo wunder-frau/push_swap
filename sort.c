@@ -61,8 +61,7 @@ void	sort(t_node **stack_a, t_node **stack_b)
 	push_all_to_b(stack_a, stack_b);
 	micro_sort(stack_a);
 	stack_len = len(*stack_b);
-	while ((*stack_b)->next != NULL)
-		//while (*stack_b)
+	while (*stack_b)
 	{
 		quicksort(*stack_b, 0, stack_len);
 		get_cost(*stack_a, *stack_b);
