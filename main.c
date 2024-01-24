@@ -1,8 +1,9 @@
 #include "push_swap.h"
 
-static void print_node(t_node *node, int pos)
+static void print_node(t_node *node)
 {
-	printf("{(%d),[%d], %d, %d, %d}->\n", pos, node->index, node->cost_b, node->cost_a, node->value);
+	// printf("{[%d], %d, %d, %d}->\n", node->index, node->cost_b, node->cost_a, node->value);
+	printf("{[%d], %d}->\n", node->index, node->value);
 	//printf("(%d)", node->value);
 	//printf("\n");
 }
@@ -14,7 +15,8 @@ static void print_list(t_node *head)
 	node = head;
 	while (node != NULL)
 	{
-		print_node(node, distance(head, node));
+		printf("%d: ", distance(head, node));
+		print_node(node);
 		node = node->next;
 	}
 	printf("NULL\n");
@@ -45,27 +47,37 @@ int	main(int argc, char **argv)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
-	// int	stack_len;
+	int	stack_len;
 
 	if (argc < 2)
 		return (0);
 	stack_a = fill_list(argc, argv);
 	stack_b = NULL;
-	// stack_len = len(stack_a);
-
-	/* -- testing sort -- */
-	// push_swap(&stack_a, &stack_b, stack_len);
-	print_list(stack_a);
-	move_n(&stack_a, &stack_b, len(stack_a)); // - 3);
 
 	printf("A:\n");
 	print_list(stack_a);
-	print_list(stack_a);
-	printf("\n");
 
-	printf("B:\n");
-	print_list(stack_b);
-	printf("\n");
+	stack_len = len(stack_a);
+	if (stack_len == 3)
+	{
+		micro_sort(&stack_a);
+	}
+	else
+	{
+		quicksort_indices(stack_a, 0, stack_len - 1);
+		move_n(&stack_a, &stack_b, stack_len); // stack_len - 3
+		while(stack_b)
+		{
+			max_to_front(&stack_b);
+			pa(&stack_a, &stack_b);
+		}
+	}
+
+	printf("\nA:\n");
+	print_list(stack_a);
+
+	// printf("B:\n");
+	// print_list(stack_b);
 
 	free_list(&stack_a);
 	free_list(&stack_b);

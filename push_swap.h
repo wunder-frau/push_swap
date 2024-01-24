@@ -22,8 +22,6 @@ typedef struct s_node
 {
 	int		index;
 	int		value;
-	int		cost_a;
-	int		cost_b;
 	struct	s_node *next;
 } t_node;
 
@@ -47,8 +45,8 @@ void		rotate_back(t_node **head);
 void		pop_front(t_node **head);
 void		free_list(t_node **head);
 
-/* quicksort.c */
-void		quicksort(t_node *head, int start, int end);
+/* quicksort_indices.c */
+void		quicksort_indices(t_node *head, int start, int end);
 
 /* actions.c */
 void		sa(t_node *stack_a);
@@ -69,5 +67,8 @@ t_node		*fill_list(int argc, char **argv);
 
 /* stack_helpers.c */
 void		move_n(t_node **stack_a, t_node **stack_b, int count);
+void		max_to_front(t_node **stack_b);
+void 		micro_sort(t_node **stack);
+
 
 #endif

@@ -27,16 +27,16 @@ static int	partition(t_node *head, int start, int end)
 }
 
 /**
- * Quicksort indices but preserve nodes positisions and their values.
+ * quicksort_indices indices but preserve nodes positisions and their values.
  */
-void	quicksort(t_node *head, int start, int end)
+void	quicksort_indices(t_node *head, int start, int end)
 {
 	int	pivot;
 
 	if (start < end)
 	{
 		pivot = partition(head, start, end);
-		quicksort(head, start, pivot - 1);
-		quicksort(head, pivot + 1, end);
+		quicksort_indices(head, start, pivot - 1);
+		quicksort_indices(head, pivot + 1, end);
 	}
 }

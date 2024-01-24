@@ -17,7 +17,7 @@ t_node	*at_ind(t_node *head, int index)
 
 /**
  * Finds and returns a node in a linked list at a specific position
-*/
+ */
 t_node	*at_pos(t_node *head, int pos)
 {
 	t_node	*node;
