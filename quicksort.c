@@ -4,7 +4,7 @@
  * Lomuto partition scheme.
  * Sort (a portion of an) list's indices preserving nodes positions and their values.
  */
-int	partition(t_node *head, int start, int end)
+static int	partition(t_node *head, int start, int end)
 {
 	int pivot;
 	int i;

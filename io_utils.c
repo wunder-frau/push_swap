@@ -9,12 +9,12 @@ void	put_str(char *str)
 		write(1, &str[i++], 1);
 }
 
-int is_digit(char c)
+static int is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-long int	ft_atoi(const char *str)
+static long int	ft_atoi(const char *str)
 {
 	long int	nb;
 	int			isneg;
@@ -38,7 +38,7 @@ long int	ft_atoi(const char *str)
 	return (nb * isneg);
 }
 
-t_node *fill_lst(int argc, char **argv)
+t_node *fill_list(int argc, char **argv)
 {
 	t_node		*head;
 	long int	nb;
@@ -57,5 +57,6 @@ t_node *fill_lst(int argc, char **argv)
 			push_back(head, (int)nb);
 		i++;
 	}
+	set_indices(head);
 	return (head);
 }

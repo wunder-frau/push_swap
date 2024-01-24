@@ -1,4 +1,5 @@
 .vscode/
+*.sttmp/
 
 *.a
 *.o
