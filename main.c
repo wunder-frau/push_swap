@@ -58,19 +58,14 @@ int	main(int argc, char **argv)
 	print_list(stack_a);
 
 	stack_len = len(stack_a);
-	if (stack_len == 3)
+	quicksort_indices(stack_a, 0, stack_len - 1);
+	move_n(&stack_a, &stack_b, stack_len - 3);
+	micro_sort(&stack_a);
+
+	while(stack_b)
 	{
-		micro_sort(&stack_a);
-	}
-	else
-	{
-		quicksort_indices(stack_a, 0, stack_len - 1);
-		move_n(&stack_a, &stack_b, stack_len); // stack_len - 3
-		while(stack_b)
-		{
-			max_to_front(&stack_b);
-			pa(&stack_a, &stack_b);
-		}
+		max_to_front(&stack_b);
+		pa(&stack_a, &stack_b);
 	}
 
 	printf("\nA:\n");

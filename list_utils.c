@@ -62,6 +62,25 @@ t_node *back(t_node *node)
 }
 
 /**
+ * Get the max element.
+ */
+/*t_node	*max(t_node *head)
+{
+	t_node	*max;
+	t_node	*node;
+
+	max = head;
+	node = head;
+	while (node)
+	{
+		if (node->value > max->value)
+			max = node;
+		node = node->next;
+	}
+	return (max);
+}*/
+
+/**
  * Distance between two nodes.
  */
 int	distance(t_node *first, t_node *last)

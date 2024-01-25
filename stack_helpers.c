@@ -1,15 +1,23 @@
 #include "push_swap.h"
 
 /**
- * Move exactly count values from stack A to stack B by using pb action,
- * i.e. this also reverts the elements order in the new stack.
+ * Move `count` lowest values from stack A to stack B.
+ * This reverts the elements order in the stack B due to usage of `pb`.
  */
 void	move_n(t_node **stack_a, t_node **stack_b, int count)
 {
-	while (count > 0 && *stack_a)
+	int	n;
+
+	n = count;
+	while (n > 0 && *stack_a)
 	{
+		if ((*stack_a)->index >= count)
+		{
+			ra(stack_a);
+			continue;
+		}
 		pb(stack_b, stack_a);
-		count--;
+		n--;
 	}
 }
 
