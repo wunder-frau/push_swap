@@ -66,7 +66,7 @@ void		put_str(char *str);
 t_node		*fill_list(int argc, char **argv);
 
 /* stack_helpers.c */
-void		move_n(t_node **stack_a, t_node **stack_b, int count);
+void		move_nmin(t_node **stack_a, t_node **stack_b, int count);
 void		max_to_front(t_node **stack_b);
 void 		micro_sort(t_node **stack);
 

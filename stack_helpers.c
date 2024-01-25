@@ -4,7 +4,7 @@
  * Move `count` lowest values from stack A to stack B.
  * This reverts the elements order in the stack B due to usage of `pb`.
  */
-void	move_n(t_node **stack_a, t_node **stack_b, int count)
+void	move_nmin(t_node **stack_a, t_node **stack_b, int count)
 {
 	int	n;
 

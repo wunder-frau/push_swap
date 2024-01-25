@@ -59,7 +59,7 @@ int	main(int argc, char **argv)
 
 	stack_len = len(stack_a);
 	quicksort_indices(stack_a, 0, stack_len - 1);
-	move_n(&stack_a, &stack_b, stack_len - 3);
+	move_nmin(&stack_a, &stack_b, stack_len - 3);
 	micro_sort(&stack_a);
 
 	while(stack_b)
