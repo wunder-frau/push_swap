@@ -1,13 +1,5 @@
 #include "push_swap.h"
 
-static int	min(const int lhs, const int rhs)
-{
-	if (lhs < rhs)
-		return (lhs);
-	else
-		return (rhs);
-}
-
 /**
  * Move `count` lowest values from stack A to stack B.
  * This reverts the elements order in the stack B due to usage of `pb`.
@@ -51,39 +43,67 @@ t_node	*find_closest(t_node *head, int index)
 		return (find_max(head));
 }
 
+/*static int	min(const int lhs, const int rhs)
+{
+	if (lhs < rhs)
+		return (lhs);
+	else
+		return (rhs);
+}*/
+
 /**
  * Count moves to get an element `node` to the top its stack
  */
-static int count_moves(t_node *head, t_node *node)
+/*static int count_moves(t_node *head, t_node *node)
 {
-	int	rb_count;
-	int	rrb_count;
+	int	r_count;
+	int	rr_count;
 	int	moves_count;
 
-	rb_count = distance(head, node);
-	rrb_count = distance(node, back(head));
-	rrb_count++;
-	moves_count = min(rb_count, rrb_count);
+	r_count = distance(head, node);
+	rr_count = distance(node, back(head));
+	rr_count++;
+	moves_count = min(r_count, rr_count);
 	return (moves_count);
+}*/
+
+/**
+ * Move the element to the front by rotating the stack A.
+ * Rotates using the `ra` action if the initial element position is closer
+ * to front, othervise reverse rotates using `rra`.
+ */
+void	to_front_a(t_node **stack_a, t_node *node)
+{
+	int	ra_count;
+	int	rra_count;
+
+	ra_count = distance(*stack_a, node);
+	rra_count = distance(node, back(*stack_a));
+	rra_count++;
+	while (ra_count && rra_count)
+	{
+		if (rra_count < ra_count)
+			rra(stack_a);
+		else
+			ra(stack_a);
+		ra_count--;
+		rra_count--;
+	}
 }
 
 /**
- * Move element with the highest index to the front by rotating the stack.
+ * Move the element to the front by rotating the stack B.
  * Rotates using the `rb` action if the initial element position is closer
  * to front, othervise reverse rotates using `rrb`.
  */
-void	max_to_front(t_node **stack_b)
+void	to_front_b(t_node **stack_b, t_node *node)
 {
-	t_node *max;
 	int	rb_count;
 	int	rrb_count;
 
-	max = at_ind(*stack_b, len(*stack_b) - 1);
-	rb_count = distance(*stack_b, max);
-	rrb_count = distance(max, back(*stack_b));
+	rb_count = distance(*stack_b, node);
+	rrb_count = distance(node, back(*stack_b));
 	rrb_count++;
-
-	count_moves(*stack_b, max);
 	while (rb_count && rrb_count)
 	{
 		if (rrb_count < rb_count)

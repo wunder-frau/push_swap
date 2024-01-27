@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-/*static void print_node(t_node *node)
+static void print_node(t_node *node)
 {
 	//printf("{[%d], %d, %d, %d}->\n", node->index, node->cost_b, node->cost_a, node->value);
 	printf("{[%d], %d}->\n", node->index, node->value);
@@ -21,7 +21,7 @@ static void print_list(t_node *head)
 	printf("NULL\n");
 }
 
-static void	push_swap(t_node **stack_a, t_node **stack_b, int stack_len)
+/*static void	push_swap(t_node **stack_a, t_node **stack_b, int stack_len)
 {
 	if (stack_len == 2 && !is_sorted(*stack_a))
 		sa(*stack_a);
@@ -64,12 +64,12 @@ int	main(int argc, char **argv)
 	micro_sort(&stack_a);
 	while(stack_b)
 	{
-		max_to_front(&stack_b);
+		to_front_b(&stack_b, find_max(stack_b));
 		pa(&stack_a, &stack_b);
 	}
 
-	// printf("\nA:\n");
-	// print_list(stack_a);
+	printf("\nA:\n");
+	print_list(stack_a);
 
 	// printf("B:\n");
 	// print_list(stack_b);

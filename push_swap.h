@@ -69,7 +69,8 @@ t_node		*fill_list(int argc, char **argv);
 
 /* stack_helpers.c */
 void		move_nmin(t_node **stack_a, t_node **stack_b, int count);
-void		max_to_front(t_node **stack_b);
+void		to_front_a(t_node **stack_a, t_node *node);
+void		to_front_b(t_node **stack_b, t_node *node);
 void 		micro_sort(t_node **stack);
 t_node		*find_closest(t_node *head, int index);
 
