@@ -1,30 +1,17 @@
 #include "push_swap.h"
 
-/**
- * Move `count` lowest values from stack A to stack B.
- * This reverts the elements order in the stack B due to usage of `pb`.
- */
-void	move_nmin(t_node **stack_a, t_node **stack_b, int count)
+static int	min(const int lhs, const int rhs)
 {
-	int	n;
-
-	n = count;
-	while (n > 0 && *stack_a)
-	{
-		if ((*stack_a)->index >= count)
-		{
-			ra(stack_a);
-			continue;
-		}
-		pb(stack_b, stack_a);
-		n--;
-	}
+	if (lhs < rhs)
+		return (lhs);
+	else
+		return (rhs);
 }
 
 /**
  * Find a node containing higher index.
  */
-t_node	*find_closest(t_node *head, int index)
+static t_node	*find_closest(t_node *head, int index)
 {
 	int	closest;
 	t_node	*node;
@@ -43,36 +30,56 @@ t_node	*find_closest(t_node *head, int index)
 		return (find_max(head));
 }
 
-/*static int	min(const int lhs, const int rhs)
-{
-	if (lhs < rhs)
-		return (lhs);
-	else
-		return (rhs);
-}*/
-
 /**
  * Count moves to get an element `node` to the top its stack
  */
-/*static int count_moves(t_node *head, t_node *node)
+static int count_moves(t_node *head, t_node *node)
 {
-	int	r_count;
-	int	rr_count;
+	int	rback_count;
+	int	rfront_count;
 	int	moves_count;
 
-	r_count = distance(head, node);
-	rr_count = distance(node, back(head));
-	rr_count++;
-	moves_count = min(r_count, rr_count);
+	rback_count = distance(head, node);
+	rfront_count = distance(node, back(head));
+	rfront_count++;
+	moves_count = min(rback_count, rfront_count);
 	return (moves_count);
-}*/
+}
+
+/**
+ * Find element in the stack B which is closest to the stack B front
+ * and for which it takes the least actions count to move it to its
+ * neighbor in the stack A.
+ */
+static t_node *find_optimal(t_node *stack_a, t_node *stack_b)
+{
+	t_node *node;
+	t_node *optimal;
+	int moves_count;
+	int min_moves_count;
+
+	min_moves_count = INT_MAX;
+	node = stack_b;
+	while (node)
+	{
+		moves_count = count_moves(stack_b, node);
+		moves_count += count_moves(stack_a, find_closest(stack_a, node->index));
+		if (moves_count < min_moves_count)
+		{
+			min_moves_count = moves_count;
+			optimal = node;
+		}
+		node = node->next;
+	}
+	return (optimal);
+}
 
 /**
  * Move the element to the front by rotating the stack A.
  * Rotates using the `ra` action if the initial element position is closer
  * to front, othervise reverse rotates using `rra`.
  */
-void	to_front_a(t_node **stack_a, t_node *node)
+static void	to_front_a(t_node **stack_a, t_node *node)
 {
 	int	ra_count;
 	int	rra_count;
@@ -96,7 +103,7 @@ void	to_front_a(t_node **stack_a, t_node *node)
  * Rotates using the `rb` action if the initial element position is closer
  * to front, othervise reverse rotates using `rrb`.
  */
-void	to_front_b(t_node **stack_b, t_node *node)
+static void	to_front_b(t_node **stack_b, t_node *node)
 {
 	int	rb_count;
 	int	rrb_count;
@@ -115,6 +122,52 @@ void	to_front_b(t_node **stack_b, t_node *node)
 	}
 }
 
+/*static void	to_front_ab(t_node **stack_a, t_node **stack_b, t_node *node)
+{
+	t_node *closest;
+	int	ra_count;
+	int	rra_count;
+	int	rb_count;
+	int	rrb_count;
+
+	closest = find_closest(*stack_a, node->index);
+	ra_count = distance(*stack_a, closest);
+	rra_count = distance(closest, back(*stack_a));
+	rb_count = distance(*stack_b, node);
+	rrb_count = distance(node, back(*stack_b));
+	rra_count++;
+	while (ra_count && rra_count)
+	{
+		if (rra_count < ra_count)
+			rrr(stack_a);
+		else
+			rr(stack_a);
+		ra_count--;
+		rra_count--;
+	}
+}*/
+
+/**
+ * Move `count` lowest values from stack A to stack B.
+ * This reverts the elements order in the stack B due to usage of `pb`.
+ */
+void	move_nmin(t_node **stack_a, t_node **stack_b, int count)
+{
+	int	n;
+
+	n = count;
+	while (n > 0 && *stack_a)
+	{
+		if ((*stack_a)->index >= count)
+		{
+			ra(stack_a);
+			continue;
+		}
+		pb(stack_b, stack_a);
+		n--;
+	}
+}
+
 /**
 *  The micro_sort function is designed for sorting a subset of a stack
 *  consisting of three elements. It employs basic stack manipulation
@@ -124,7 +177,7 @@ void	to_front_b(t_node **stack_b, t_node *node)
    - Before calling micro_sort: {(0),[0],3}->{(1),[1],1}->{(2),[2],2}->NULL
    - After calling micro_sort:  {(0),[0],3}->{(1),[1],2}->{(2),[2],1}->NULL
 */
-void micro_sort(t_node **stack)
+void	micro_sort(t_node **stack)
 {
 	if((*stack)->value > (*stack)->next->value && (*stack)->value > back(*stack)->value)
 		ra(stack);
@@ -134,4 +187,17 @@ void micro_sort(t_node **stack)
 		rra(stack);
 	if((*stack)->value > (*stack)->next->value)
 		sa(*stack);
+}
+
+void	push_swap(t_node **stack_a, t_node **stack_b)
+{
+	t_node *optimal;
+
+	optimal = find_optimal(*stack_a, *stack_b);
+	// TODO: to_front_ab(*stack_a, *stack_b, optimal);
+	to_front_b(stack_b, optimal);
+	to_front_a(stack_a, find_closest(*stack_a, optimal->index));
+	pa(stack_a, stack_b);
+	if (find_min(*stack_a) != *stack_a)
+		to_front_a(stack_a, find_min(*stack_a));
 }
