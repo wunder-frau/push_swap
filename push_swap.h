@@ -34,6 +34,8 @@ t_node		*new_node(int value);
 t_node		*at_ind(t_node *head, int index);
 t_node		*at_pos(t_node *head, int pos);
 t_node		*back(t_node *node);
+t_node		*find_max(t_node *head);
+t_node		*find_min(t_node *head);
 void		set_indices(t_node *head);
 int			distance(t_node *first, t_node *last);
 int			len(t_node *head);
@@ -69,6 +71,6 @@ t_node		*fill_list(int argc, char **argv);
 void		move_nmin(t_node **stack_a, t_node **stack_b, int count);
 void		max_to_front(t_node **stack_b);
 void 		micro_sort(t_node **stack);
-
+t_node		*find_closest(t_node *head, int index);
 
 #endif

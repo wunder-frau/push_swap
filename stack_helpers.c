@@ -1,5 +1,13 @@
 #include "push_swap.h"
 
+static int	min(const int lhs, const int rhs)
+{
+	if (lhs < rhs)
+		return (lhs);
+	else
+		return (rhs);
+}
+
 /**
  * Move `count` lowest values from stack A to stack B.
  * This reverts the elements order in the stack B due to usage of `pb`.
@@ -22,6 +30,44 @@ void	move_nmin(t_node **stack_a, t_node **stack_b, int count)
 }
 
 /**
+ * Find a node containing higher index.
+ */
+t_node	*find_closest(t_node *head, int index)
+{
+	int	closest;
+	t_node	*node;
+
+	closest = INT_MAX;
+	node = head;
+	while (node)
+	{
+		if (index < node->index && node->index < closest)
+			closest = node->index;
+		node = node->next;
+	}
+	if (closest != INT_MAX)
+		return (at_ind(head, closest));
+	else
+		return (find_max(head));
+}
+
+/**
+ * Count moves to get an element `node` to the top its stack
+ */
+static int count_moves(t_node *head, t_node *node)
+{
+	int	rb_count;
+	int	rrb_count;
+	int	moves_count;
+
+	rb_count = distance(head, node);
+	rrb_count = distance(node, back(head));
+	rrb_count++;
+	moves_count = min(rb_count, rrb_count);
+	return (moves_count);
+}
+
+/**
  * Move element with the highest index to the front by rotating the stack.
  * Rotates using the `rb` action if the initial element position is closer
  * to front, othervise reverse rotates using `rrb`.
@@ -36,6 +82,8 @@ void	max_to_front(t_node **stack_b)
 	rb_count = distance(*stack_b, max);
 	rrb_count = distance(max, back(*stack_b));
 	rrb_count++;
+
+	count_moves(*stack_b, max);
 	while (rb_count && rrb_count)
 	{
 		if (rrb_count < rb_count)

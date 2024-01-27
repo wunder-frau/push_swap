@@ -64,7 +64,7 @@ t_node *back(t_node *node)
 /**
  * Get the max element.
  */
-/*t_node	*max(t_node *head)
+t_node	*find_max(t_node *head)
 {
 	t_node	*max;
 	t_node	*node;
@@ -78,7 +78,26 @@ t_node *back(t_node *node)
 		node = node->next;
 	}
 	return (max);
-}*/
+}
+
+/**
+ * Get the max element.
+ */
+t_node	*find_min(t_node *head)
+{
+	t_node	*min;
+	t_node	*node;
+
+	min = head;
+	node = head;
+	while (node)
+	{
+		if (node->value < min->value)
+			min = node;
+		node = node->next;
+	}
+	return (min);
+}
 
 /**
  * Distance between two nodes.
