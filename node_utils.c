@@ -34,8 +34,13 @@ t_node	*new_node(int value)
 		return (NULL);
 	new->value = value;
 	new->index = 0;
-	// new->cost_a = 0;
-	// new->cost_b = 0;
 	new->next = NULL;
 	return (new);
+}
+
+void print_node(t_node *node)
+{
+	// printf("{[%d], %d}->\n", node->index, node->value);
+	// printf("{[%d], %d}->\n", node->index, node->value);
+	printf("%d->", node->index);
 }

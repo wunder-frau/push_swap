@@ -29,6 +29,7 @@ typedef struct s_node
 void		swap_values(t_node *a, t_node *b);
 void		swap_indices(t_node *a, t_node *b);
 t_node		*new_node(int value);
+void 		print_node(t_node *node);
 
 /* list_utils.c */
 t_node		*at_ind(t_node *head, int index);
@@ -46,6 +47,7 @@ void		rotate_front(t_node **head);
 void		rotate_back(t_node **head);
 void		pop_front(t_node **head);
 void		free_list(t_node **head);
+void 		print_list(t_node *head);
 
 /* quicksort_indices.c */
 void		quicksort_indices(t_node *head, int start, int end);
@@ -70,6 +72,7 @@ t_node		*fill_list(int argc, char **argv);
 /* stack_helpers.c */
 void 		micro_sort(t_node **stack);
 void		move_n(t_node **stack_a, t_node **stack_b, const int count);
+void		to_front_a(t_node **stack_a, t_node *node);
 void		push_swap(t_node **stack_a, t_node **stack_b);
 
 #endif

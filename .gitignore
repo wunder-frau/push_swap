@@ -1,6 +1,6 @@
 .vscode/
 *.sttmp/
-push_swap_tester/
+tester/
 push_swap
 *.a
 *.o

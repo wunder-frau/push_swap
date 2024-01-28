@@ -168,7 +168,6 @@ void	rotate_front(t_node **head)
 	last = back(*head);
 	if(*head == NULL || last == *head)
 		return ;
-	// at_pos(*head, last->index - 1)->next = NULL;
 	at_pos(*head, len(*head) - 2)->next = NULL;
 	last->next = *head;
 	*head = last;
@@ -181,7 +180,6 @@ void	rotate_back(t_node **head)
 {
 	t_node	*last;
 	t_node	*temp;
-	// int		last_ind;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return ;
@@ -220,4 +218,18 @@ void	free_list(t_node **head)
 		*head = tmp;
 	}
 	*head = NULL;
+}
+
+void print_list(t_node *head)
+{
+	t_node *node;
+
+	node = head;
+	while (node != NULL)
+	{
+		// printf("%d: ", distance(head, node));
+		print_node(node);
+		node = node->next;
+	}
+	// printf("NULL\n");
 }
