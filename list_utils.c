@@ -112,7 +112,7 @@ int	distance(t_node *first, t_node *last)
 		res++;
 		first = first->next;
 	}
-	return(res);
+	return (res);
 }
 
 /**

@@ -25,12 +25,6 @@ typedef struct s_node
 	struct	s_node *next;
 } t_node;
 
-// typedef struct s_counts
-// {
-// 	int	rback;
-// 	int	rfront;
-// } t_counts;
-
 /* node_utils.c */
 void		swap_values(t_node *a, t_node *b);
 void		swap_indices(t_node *a, t_node *b);
@@ -74,12 +68,8 @@ void		put_str(char *str);
 t_node		*fill_list(int argc, char **argv);
 
 /* stack_helpers.c */
-// t_node		*find_closest(t_node *head, int index);
-// t_node 		*find_optimal(t_node *stack_a, t_node *stack_b);
-// void		to_front_a(t_node **stack_a, t_node *node);
-// void		to_front_b(t_node **stack_b, t_node *node);
 void 		micro_sort(t_node **stack);
-void		move_nmin(t_node **stack_a, t_node **stack_b, int count);
+void		move_n(t_node **stack_a, t_node **stack_b, const int count);
 void		push_swap(t_node **stack_a, t_node **stack_b);
 
 #endif

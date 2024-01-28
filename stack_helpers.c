@@ -4,8 +4,7 @@ static int	min(const int lhs, const int rhs)
 {
 	if (lhs < rhs)
 		return (lhs);
-	else
-		return (rhs);
+	return (rhs);
 }
 
 static int	nb_abs(const int value)
@@ -16,9 +15,9 @@ static int	nb_abs(const int value)
 }
 
 /**
- * Find a node containing higher index.
+ * Find a node containing closest index.
  */
-static t_node	*find_closest(t_node *head, int index)
+static t_node	*find_closest(t_node *head, const int index)
 {
 	int	closest;
 	t_node	*node;
@@ -33,8 +32,7 @@ static t_node	*find_closest(t_node *head, int index)
 	}
 	if (closest != INT_MAX)
 		return (at_ind(head, closest));
-	else
-		return (find_max(head));
+	return (find_min(head));
 }
 
 /**
@@ -44,13 +42,11 @@ static int count_moves(t_node *head, t_node *node)
 {
 	int	rback_count;
 	int	rfront_count;
-	int	moves_count;
 
 	rback_count = distance(head, node);
 	rfront_count = distance(node, back(head));
 	rfront_count++;
-	moves_count = min(rback_count, rfront_count);
-	return (moves_count);
+	return (min(rback_count, rfront_count));
 }
 
 /**
@@ -62,22 +58,23 @@ static t_node *find_optimal(t_node *stack_a, t_node *stack_b)
 {
 	t_node *node;
 	t_node *optimal;
-	int moves_count;
-	int min_moves_count;
+	int min_delta;
+	int delta;
 	t_node *closest;
 
-	min_moves_count = INT_MAX;
+	min_delta = INT_MAX;
 	node = stack_b;
 	optimal = stack_b;
 	while (node)
 	{
 		closest = find_closest(stack_a, node->index);
-		moves_count = count_moves(stack_b, node);
-		// moves_count += count_moves(stack_a, closest);
-		moves_count += nb_abs(closest->index - node->index);
-		if (moves_count < min_moves_count)
+		delta = 0;
+		delta += nb_abs(closest->index - node->index);
+		// delta += count_moves(stack_b, node);
+		delta += count_moves(stack_a, closest);
+		if (delta < min_delta)
 		{
-			min_moves_count = moves_count;
+			min_delta = delta;
 			optimal = node;
 		}
 		node = node->next;
@@ -148,12 +145,14 @@ static void	to_front_ab(t_node **stack_a, t_node **stack_b, t_node *node)
 	rb_count = distance(*stack_b, node);
 	rrb_count = distance(node, back(*stack_b));
 	rrb_count++;
-	if ((ra_count < rra_count && rb_count > rrb_count) || // elems are on the different parts
+	if ((ra_count < rra_count && rb_count > rrb_count) ||
 			(ra_count > rra_count && rb_count < rrb_count))
 		return ;
 	while (ra_count && rra_count && rb_count && rrb_count)
 	{
-		if (rra_count < ra_count && rrb_count < rb_count)
+		if ((rra_count < ra_count && rrb_count <= rb_count) ||
+				(rra_count <= ra_count && rrb_count < rb_count))
+		// if (rra_count < ra_count && rrb_count < rb_count)
 			rrr(stack_a, stack_b);
 		else
 			rr(stack_a, stack_b);
@@ -168,20 +167,32 @@ static void	to_front_ab(t_node **stack_a, t_node **stack_b, t_node *node)
  * Move `count` lowest values from stack A to stack B.
  * This reverts the elements order in the stack B due to usage of `pb`.
  */
-void	move_nmin(t_node **stack_a, t_node **stack_b, int count)
+void	move_n(t_node **stack_a, t_node **stack_b, const int count)
 {
+	int	size_init;
 	int	n;
+	int	i;
 
-	n = count;
-	while (n > 0 && *stack_a)
+	size_init = len(*stack_a);
+	n = 0;
+	i = 0;
+	while (i < size_init && n < size_init / 2)
 	{
-		if ((*stack_a)->index >= count)
+		if ((*stack_a)->index >= size_init / 2)
 		{
 			ra(stack_a);
-			continue;
 		}
+		else
+		{
+			pb(stack_b, stack_a);
+			n++;
+		}
+		i++;
+	}
+	while (n < count)
+	{
 		pb(stack_b, stack_a);
-		n--;
+		n++;
 	}
 }
 
@@ -215,6 +226,6 @@ void	push_swap(t_node **stack_a, t_node **stack_b)
 	to_front_b(stack_b, optimal);
 	to_front_a(stack_a, find_closest(*stack_a, optimal->index));
 	pa(stack_a, stack_b);
-	if (find_min(*stack_a) != *stack_a)
+	if (find_min(*stack_a) != *stack_a && find_max(*stack_a) != back(*stack_a))
 		to_front_a(stack_a, find_min(*stack_a));
 }
