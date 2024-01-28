@@ -1,45 +1,24 @@
 #include "push_swap.h"
 
-/*static void print_node(t_node *node)
-{
-	//printf("{[%d], %d, %d, %d}->\n", node->index, node->cost_b, node->cost_a, node->value);
-	printf("{[%d], %d}->\n", node->index, node->value);
-	//printf("(%d)", node->value);
-}
-
-static void print_list(t_node *head)
-{
-	t_node *node;
-
-	node = head;
-	while (node != NULL)
-	{
-		// printf("%d: ", distance(head, node));
-		print_node(node);
-		node = node->next;
-	}
-	printf("NULL\n");
-}
-
-static void	push_swap(t_node **stack_a, t_node **stack_b, int stack_len)
-{
-	if (stack_len == 2 && !is_sorted(*stack_a))
-		sa(*stack_a);
-	else if (stack_len == 3)
-		micro_sort(stack_a);
-	else if (stack_len > 3 && !is_sorted(*stack_a))
-		sort(stack_a, stack_b);
-}*/
-
-// int	is_sorted(t_node *stack)
+// static void print_node(t_node *node)
 // {
-// 	while (stack->next != NULL)
+// 	//printf("{[%d], %d, %d, %d}->\n", node->index, node->cost_b, node->cost_a, node->value);
+// 	printf("{[%d], %d}->\n", node->index, node->value);
+// 	//printf("(%d)", node->value);
+// }
+
+// static void print_list(t_node *head)
+// {
+// 	t_node *node;
+
+// 	node = head;
+// 	while (node != NULL)
 // 	{
-// 		if (stack->value > stack->next->value)
-// 			return (0);
-// 		stack = stack->next;
+// 		// printf("%d: ", distance(head, node));
+// 		print_node(node);
+// 		node = node->next;
 // 	}
-// 	return (1);
+// 	printf("NULL\n");
 // }
 
 int	main(int argc, char **argv)
@@ -60,7 +39,6 @@ int	main(int argc, char **argv)
 	// print_list(stack_a);
 	// printf("B:\n");
 	// print_list(stack_b);
-	// print_node(find_closest(stack_a, ));
 	micro_sort(&stack_a);
 	while(stack_b)
 	{
