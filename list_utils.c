@@ -81,7 +81,7 @@ t_node	*find_max(t_node *head)
 }
 
 /**
- * Get the max element.
+ * Get the min element.
  */
 t_node	*find_min(t_node *head)
 {

@@ -15,9 +15,7 @@ int	main(int argc, char **argv)
 	move_n(&stack_a, &stack_b, stack_len - 3);
 	micro_sort(&stack_a);
 	while(stack_b)
-	{
 		push_swap(&stack_a, &stack_b);
-	}
 	if (find_min(stack_a) != stack_a)
 		to_front_a(&stack_a, find_min(stack_a));
 	free_list(&stack_a);
