@@ -191,9 +191,6 @@ void	move_n(t_node **stack_a, t_node **stack_b, const int count)
 *  consisting of three elements. It employs basic stack manipulation
 *  operations (ra, sa, and rra) to achieve a specific sorting pattern.
 *  This function assumes that the stack has at least three elements.
-   Example Usage:
-   - Before calling micro_sort: {(0),[0],3}->{(1),[1],1}->{(2),[2],2}->NULL
-   - After calling micro_sort:  {(0),[0],3}->{(1),[1],2}->{(2),[2],1}->NULL
 */
 void	micro_sort(t_node **stack)
 {
@@ -205,6 +202,7 @@ void	micro_sort(t_node **stack)
 		rra(stack);
 	if ((*stack)->value > (*stack)->next->value)
 		sa(*stack);
+//	swap_indices(*stack, (*stack)->next);
 }
 
 void	push_swap(t_node **stack_a, t_node **stack_b)

@@ -28,7 +28,8 @@ void pa(t_node **stack_a, t_node **stack_b)
 	if (stack_b == NULL)
 		return ;
 	push_front(stack_a, (*stack_b)->value);
-	(*stack_a)->index = (*stack_b)->index;
+	//(*stack_a)->index = (*stack_b)->index;
+	swap_indices(*stack_a, *stack_b);
 	pop_front(stack_b);
 	put_str("pa\n");
 }
@@ -38,7 +39,8 @@ void pb(t_node **stack_b, t_node **stack_a)
 	if (stack_a == NULL)
 		return ;
 	push_front(stack_b, (*stack_a)->value);
-	(*stack_b)->index = (*stack_a)->index;
+	//(*stack_b)->index = (*stack_a)->index;
+	swap_indices(*stack_b, *stack_a);
 	pop_front(stack_a);
 	put_str("pb\n");
 }

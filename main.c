@@ -11,11 +11,19 @@ int	main(int argc, char **argv)
 	stack_a = fill_list(argc, argv);
 	stack_b = NULL;
 	stack_len = len(stack_a);
+	if (len(stack_a) <= 3)
+	{
+		micro_sort(&stack_a);
+		swap_indices(stack_a, stack_a->next);
+	}
+	else
+	{
 	quicksort_indices(stack_a, 0, stack_len - 1);
 	move_n(&stack_a, &stack_b, stack_len - 3);
 	micro_sort(&stack_a);
 	while(stack_b)
 		push_swap(&stack_a, &stack_b);
+	}
 	if (find_min(stack_a) != stack_a)
 		to_front_a(&stack_a, find_min(stack_a));
 	free_list(&stack_a);
