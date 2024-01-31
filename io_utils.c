@@ -13,6 +13,24 @@ static int is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
+static int	is_sign(char c)
+{
+	return (c == '+' || c == '-');
+}
+
+int	arg_is_number(char *argv)
+{
+	int	i;
+
+	i = 0;
+	if (is_sign(argv[i]) && argv[i + 1] != '\0')	
+		i++;
+	while (argv[i] && is_digit(argv[i]))
+		i++;
+	if (argv[i] != '\0' && !is_digit(argv[i]))
+		return (0);
+	return (1);
+}
 
 static long int	ft_atoi(const char *str)
 {
@@ -37,7 +55,9 @@ static long int	ft_atoi(const char *str)
 	}
 	return (nb * isneg);
 }
-
+/**
+ * Prints "Error\n" after freeing stack a and b, exits with error code 1.
+ */
 t_node *fill_list(int argc, char **argv)
 {
 	t_node		*head;
@@ -51,6 +71,8 @@ t_node *fill_list(int argc, char **argv)
 	while (i < argc)
 	{
 		nb = ft_atoi(argv[i]);
+		if (nb > INT_MAX || nb < INT_MIN)
+			handle_error(&head, NULL);
 		if (i == 1)
 			head = new_node((int)nb);
 		else

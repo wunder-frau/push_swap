@@ -41,6 +41,6 @@ t_node	*new_node(int value)
 void print_node(t_node *node)
 {
 	// printf("{[%d], %d}->\n", node->index, node->value);
-	// printf("{[%d], %d}->\n", node->index, node->value);
-	printf("%d->", node->index);
+	 printf("{[%d], %d}->\n", node->index, node->value);
+	//printf("%d->", node->index);
 }

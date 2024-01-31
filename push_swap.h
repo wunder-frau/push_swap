@@ -47,6 +47,7 @@ void		rotate_front(t_node **head);
 void		rotate_back(t_node **head);
 void		pop_front(t_node **head);
 void		free_list(t_node **head);
+void		handle_error(t_node **stack_a, t_node **stack_b);
 void 		print_list(t_node *head);
 
 /* quicksort_indices.c */
@@ -68,6 +69,7 @@ void		rrr(t_node **stack_a, t_node **stack_b);
 /* io_utils.c */
 void		put_str(char *str);
 t_node		*fill_list(int argc, char **argv);
+int			arg_is_number(char *argv);
 
 /* stack_helpers.c */
 void 		micro_sort(t_node **stack);

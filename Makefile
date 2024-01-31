@@ -7,8 +7,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-# %.o: %.c
-# 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
