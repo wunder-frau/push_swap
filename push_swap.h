@@ -70,11 +70,17 @@ void		rrr(t_node **stack_a, t_node **stack_b);
 void		put_str(char *str);
 t_node		*fill_list(int argc, char **argv);
 int			arg_is_number(char *argv);
+int			is_sign(char c);
 
 /* stack_helpers.c */
 void 		micro_sort(t_node **stack);
 void		move_n(t_node **stack_a, t_node **stack_b, const int count);
 void		to_front_a(t_node **stack_a, t_node *node);
 void		push_swap(t_node **stack_a, t_node **stack_b);
+
+/* input_validator.c */
+int			validate_input(char **argv);
+int			nbstr_cmp(const char *s1, const char *s2);
+int			is_zero(char *argv);
 
 #endif

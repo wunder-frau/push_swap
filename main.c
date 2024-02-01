@@ -8,10 +8,13 @@ int	main(int argc, char **argv)
 
 	if (argc <= 2)
 		return (0);
+	if (!validate_input(argv))
+		handle_error(NULL, NULL);
 	stack_a = fill_list(argc, argv);
 	stack_b = NULL;
 	stack_len = len(stack_a);
 	arg_is_number(*argv);
+	validate_input(argv);
 	print_list(stack_a);
 
 
@@ -23,6 +26,7 @@ int	main(int argc, char **argv)
 		push_swap(&stack_a, &stack_b);
 	if (find_min(stack_a) != stack_a)
 		to_front_a(&stack_a, find_min(stack_a));
+			print_list(stack_a);
 	free_list(&stack_a);
 	free_list(&stack_b);
 	return (0);
