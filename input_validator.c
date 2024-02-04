@@ -1,5 +1,15 @@
 #include "push_swap.h"
 
+void	handle_error(t_node **stack_a, t_node **stack_b)
+{
+	if (stack_a == NULL || *stack_a != NULL)
+		free_list(stack_a);
+	if (stack_b == NULL || *stack_b != NULL)
+		free_list(stack_b);
+	write(2, "Error\n", 6);
+	exit (1);
+}
+
 static int	have_duplicates(char **argv)
 {
 	int	i;
@@ -12,6 +22,26 @@ static int	have_duplicates(char **argv)
 		while (argv[j])
 		{
 			if (j != i && nbstr_cmp(argv[i], argv[j]) == 0)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	have_dup(t_node *head)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < len(head))
+	{
+		j = 0;
+		while (j < len(head))
+		{
+			if (j != i && at_pos(head, i)->value == at_pos(head, j)->value)
 				return (1);
 			j++;
 		}
@@ -33,7 +63,7 @@ int	is_zero(char *argv)
 		return (0);
 	return (1);
 }
-
+//TO DO: input 2 06 6!!!!
 int	validate_input(char **argv)
 {
 	int	i;

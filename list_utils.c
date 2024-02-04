@@ -220,16 +220,6 @@ void	free_list(t_node **head)
 	*head = NULL;
 }
 
-void	handle_error(t_node **stack_a, t_node **stack_b)
-{
-	if (stack_a == NULL || *stack_a != NULL)
-		free_list(stack_a);
-	if (stack_b == NULL || *stack_b != NULL)
-		free_list(stack_b);
-	write(2, "Error\n", 6);
-	exit (1);
-}
-
 void print_list(t_node *head)
 {
 	t_node *node;

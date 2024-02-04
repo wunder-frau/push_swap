@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+//!!!
+# include <string.h>
 
 typedef struct s_node
 {
@@ -71,6 +73,7 @@ void		put_str(char *str);
 t_node		*fill_list(int argc, char **argv);
 int			arg_is_number(char *argv);
 int			is_sign(char c);
+int			is_digit(char c);
 
 /* stack_helpers.c */
 void 		micro_sort(t_node **stack);
@@ -82,5 +85,11 @@ void		push_swap(t_node **stack_a, t_node **stack_b);
 int			validate_input(char **argv);
 int			nbstr_cmp(const char *s1, const char *s2);
 int			is_zero(char *argv);
+int			have_dup(t_node *head);
+
+/* split.c */
+t_node	*fill_split(int argc, char **args);
+char	**ft_split(char const *s, char c);
+t_node	*fill_stack_one(int argc, char **args);
 
 #endif

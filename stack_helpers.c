@@ -166,7 +166,7 @@ void	move_n(t_node **stack_a, t_node **stack_b, const int count)
 	size_init = len(*stack_a);
 	n = 0;
 	i = 0;
-	while (count == 0 && i < size_init && n < size_init / 2)
+	while (count > 0 && i < size_init && n < size_init / 2)
 	{
 		if ((*stack_a)->index > size_init / 2)
 		{
