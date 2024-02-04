@@ -137,6 +137,23 @@ void	insert(t_node *prev, t_node *curr)
 }
 
 /**
+ * Check if the `node`'s value is unique.
+ */
+bool	is_unique(t_node *head, t_node *unique)
+{
+	t_node *node;
+
+	node = head;
+	while (node)
+	{
+		if (node != unique && node->value == unique->value)
+			return (false);
+		node = node->next;
+	}
+	return (true);
+}
+
+/**
  * Create a node at the front with a value. Invalidates indices.
  */
 void	push_front(t_node **head, int value)
@@ -220,7 +237,7 @@ void	free_list(t_node **head)
 	*head = NULL;
 }
 
-void print_list(t_node *head)
+void	print_list(t_node *head)
 {
 	t_node *node;
 

@@ -13,12 +13,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <limits.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h> // ?
 # include <unistd.h>
-# include <limits.h>
-//!!!
-# include <string.h>
 
 typedef struct s_node
 {
@@ -43,6 +43,7 @@ void		set_indices(t_node *head);
 int			distance(t_node *first, t_node *last);
 int			len(t_node *head);
 void		insert(t_node *prev, t_node *curr);
+bool		is_unique(t_node *head, t_node *unique);
 void		push_front(t_node **head, int value);
 void		push_back(t_node *head, int value);
 void		rotate_front(t_node **head);
@@ -70,7 +71,7 @@ void		rrr(t_node **stack_a, t_node **stack_b);
 
 /* io_utils.c */
 void		put_str(char *str);
-t_node		*fill_list(int argc, char **argv);
+t_node		*fill_list(int count, char **nums);
 int			arg_is_number(char *argv);
 int			is_sign(char c);
 int			is_digit(char c);
@@ -83,13 +84,9 @@ void		push_swap(t_node **stack_a, t_node **stack_b);
 
 /* input_validator.c */
 int			validate_input(char **argv);
-int			nbstr_cmp(const char *s1, const char *s2);
 int			is_zero(char *argv);
-int			have_dup(t_node *head);
 
 /* split.c */
-t_node	*fill_split(int argc, char **args);
 char	**ft_split(char const *s, char c);
-t_node	*fill_stack_one(int argc, char **args);
 
 #endif

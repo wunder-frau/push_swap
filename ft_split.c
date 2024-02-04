@@ -6,7 +6,7 @@ t_node	*fill_split(int argc, char **args)
 
 	if (!args)
 		return (0);
-	stack_a = fill_stack_one(argc, args);
+	stack_a = fill_list(argc, args);
 	// if (find_min(stack_a) == stack_a)
 	// {
 	// 	//ft_free(args);
@@ -15,6 +15,7 @@ t_node	*fill_split(int argc, char **args)
 	// 	return (0);
 	// }
 	print_list(stack_a);
+		printf("\n");
 	return (stack_a);
 }
 

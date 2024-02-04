@@ -33,31 +33,6 @@ int	arg_is_number(char *argv)
 	return (1);
 }
 
-int	nbstr_cmp(const char *s1, const char *s2)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = i;
-	if (s1[i] == '+')
-	{
-		if (s2[j] != '+')
-			i++;
-	}
-	else
-	{
-		if (s2[j] == '+')
-			j++;
-	}
-	while (s1[i] != '\0' && s2[j] != '\0' && s1[i] == s2[j])
-	{
-		i++;
-		j++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[j]);
-}
-
 static long int	ft_atoi(const char *str)
 {
 	long int	nb;
@@ -82,61 +57,30 @@ static long int	ft_atoi(const char *str)
 	return (nb * isneg);
 }
 
-t_node	*fill_stack_one(int argc, char **args)
-{
-	t_node		*stack_a;
-	long		nb;
-	int			i;
-
-	stack_a = NULL;
-	nb = 0;
-	i = 1;
-	while (args[i] != NULL)
-		i++;
-	argc = i;
-	if (!validate_input(args))
-		handle_error(NULL, NULL);
-	i = 0;
-	while (i < argc)
-	{
-		nb = ft_atoi(args[i]);
-		if (nb > INT_MAX || nb < INT_MIN)
-			handle_error(&stack_a, NULL);
-		if (i == 0)
-			stack_a = new_node((int)nb);
-		else
-			push_back(stack_a, (int)nb);
-		i++;
-	}
-	set_indices(stack_a);
-	return (stack_a);
-}
-
 /**
  * Prints "Error\n" after freeing stack a and b, exits with error code 1.
  */
-t_node *fill_list(int argc, char **argv)
+t_node *fill_list(int count, char **nums)
 {
 	t_node		*head;
 	long int	nb;
 	int			i;
 
-	head = NULL;
+	head = new_node(ft_atoi(nums[0]));
 	nb = 0;
+	if (!validate_input(nums))
+		handle_error(NULL, NULL);
 	i = 1;
-	while (i < argc)
+	while (i < count)
 	{
-		nb = ft_atoi(argv[i]);
+		nb = ft_atoi(nums[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
 			handle_error(&head, NULL); // ?
-		if (i == 1)
-			head = new_node((int)nb);
-		else
-			push_back(head, (int)nb);
+		push_back(head, (int)nb);
+		if (!is_unique(head, back(head)))
+			handle_error(&head, NULL);
 		i++;
 	}
-	if (have_dup(head))
-		handle_error(&head, NULL);
 	set_indices(head);
 	return (head);
 }
