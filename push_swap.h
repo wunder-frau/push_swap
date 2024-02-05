@@ -85,6 +85,7 @@ void		push_swap(t_node **stack_a, t_node **stack_b);
 /* input_validator.c */
 int			validate_input(char **argv);
 int			is_zero(char *argv);
+void		ft_free_f(char **argv);
 
 /* split.c */
 char	**ft_split(char const *s, char c);

@@ -57,16 +57,17 @@ static long int	ft_atoi(const char *str)
 	return (nb * isneg);
 }
 
-/**
- * Prints "Error\n" after freeing stack a and b, exits with error code 1.
- */
 t_node *fill_list(int count, char **nums)
 {
 	t_node		*head;
-	long int	nb;
+	long 		nb;
 	int			i;
+	long		nb_fill;
 
-	head = new_node(ft_atoi(nums[0]));
+	nb_fill = ft_atoi(nums[0]);
+	if (nb_fill > INT_MAX || nb_fill < INT_MIN)
+		handle_error(NULL, NULL);
+	head = new_node(nb_fill);
 	nb = 0;
 	if (!validate_input(nums))
 		handle_error(NULL, NULL);

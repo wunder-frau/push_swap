@@ -202,7 +202,6 @@ void	micro_sort(t_node **stack)
 		rra(stack);
 	if ((*stack)->value > (*stack)->next->value)
 		sa(*stack);
-//	swap_indices(*stack, (*stack)->next);
 }
 
 void	push_swap(t_node **stack_a, t_node **stack_b)

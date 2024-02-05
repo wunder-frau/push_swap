@@ -9,19 +9,23 @@
  */
 static t_node *fill(int argc, char **argv)
 {
+	t_node	*stack_a;
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
 		argc = 0;
 		while (argv[argc])
 			argc++;
+		stack_a = fill_list(argc, argv);
+		ft_free_f(argv);
 	}
 	else
 	{
 		argv = &argv[1];
 		argc--;
+		stack_a = fill_list(argc, argv);
 	}
-	return (fill_list(argc, argv));
+	return (stack_a);
 }
 
 int	main(int argc, char **argv)
@@ -30,10 +34,10 @@ int	main(int argc, char **argv)
 	t_node	*stack_b;
 	int		count;
 
-	// if (argc == 1 || (argc == 2 && !argv[1][0]))
-	// 	return (0);
-	// if (!validate_input(argv))
-	// 	handle_error(NULL, NULL);
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (0);
+	if (!validate_input(argv))
+		handle_error(NULL, NULL);
 	stack_a = fill(argc, argv);
 	stack_b = NULL;
 	count = len(stack_a);
@@ -47,7 +51,7 @@ int	main(int argc, char **argv)
 		if (find_min(stack_a) != stack_a)
 			to_front_a(&stack_a, find_min(stack_a));
 	}
-	print_list(stack_a);
+	// print_list(stack_a);
 	free_list(&stack_a);
 	free_list(&stack_b);
 	return (0);

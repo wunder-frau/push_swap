@@ -14,8 +14,8 @@ t_node	*fill_split(int argc, char **args)
 	// 	free_list(&stack_a);
 	// 	return (0);
 	// }
-	print_list(stack_a);
-		printf("\n");
+	// print_list(stack_a);
+	// 	printf("\n");
 	return (stack_a);
 }
 
