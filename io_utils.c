@@ -19,21 +19,21 @@ int	is_sign(char c)
 	return (c == '+' || c == '-');
 }
 
-int	arg_is_number(char *argv)
+bool	is_number(char *argv)
 {
 	int	i;
 
 	i = 0;
-	if (is_sign(argv[i]) && argv[i + 1] != '\0')	
+	if (is_sign(argv[i]) && argv[i + 1] != '\0')
 		i++;
 	while (argv[i] && is_digit(argv[i]))
 		i++;
 	if (argv[i] != '\0' && !is_digit(argv[i]))
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }
 
-static long int	ft_atoi(const char *str)
+static int	ft_atoi(const char *str)
 {
 	long int	nb;
 	int			isneg;
@@ -54,30 +54,27 @@ static long int	ft_atoi(const char *str)
 		nb = (nb * 10) + (str[i] - '0');
 		i++;
 	}
-	return (nb * isneg);
+	nb *= isneg;
+	if (!(INT_MIN <= nb && nb <= INT_MAX))
+		handle_error(NULL, NULL); // ?
+	return (nb);
 }
 
 t_node *fill_list(int count, char **nums)
 {
-	t_node		*head;
-	long 		nb;
-	int			i;
-	long		nb_fill;
+	t_node	*head;
+	int		nb;
+	int		i;
 
-	nb_fill = ft_atoi(nums[0]);
-	if (nb_fill > INT_MAX || nb_fill < INT_MIN)
-		handle_error(NULL, NULL);
-	head = new_node(nb_fill);
+	head = new_node(ft_atoi(nums[0]));
+	if (!head)
+		handle_error(&head, NULL); // ?
 	nb = 0;
-	if (!validate_input(nums))
-		handle_error(NULL, NULL);
 	i = 1;
 	while (i < count)
 	{
 		nb = ft_atoi(nums[i]);
-		if (nb > INT_MAX || nb < INT_MIN)
-			handle_error(&head, NULL); // ?
-		push_back(head, (int)nb);
+		push_back(head, nb);
 		if (!is_unique(head, back(head)))
 			handle_error(&head, NULL);
 		i++;

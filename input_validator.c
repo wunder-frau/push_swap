@@ -10,7 +10,7 @@ void	handle_error(t_node **stack_a, t_node **stack_b)
 	if (stack_b == NULL || *stack_b != NULL)
 		free_list(stack_b);
 	write(2, "Error\n", 6);
-	exit (1);
+		exit (1);
 }
 
 void	ft_free_f(char **argv)
@@ -38,21 +38,19 @@ int	is_zero(char *argv)
 	return (1);
 }
 
-int	validate_input(char **argv)
+bool	is_valid(int argc, char **argv)
 {
 	int	i;
 	int	nb_zeros;
 
 	nb_zeros = 0;
-	i = 1;
-	while (argv[i])
+	i = 0;
+	while (i < argc)
 	{
-		if (!arg_is_number(argv[i]))
-			return (0);
+		if (!is_number(argv[i]))
+			return (false);
 		nb_zeros += is_zero(argv[i]);
 		i++;
 	}
-	if (nb_zeros > 1)
-		return (0);
-	return (1);
+	return (nb_zeros <= 1);
 }

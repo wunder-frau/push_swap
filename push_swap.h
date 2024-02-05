@@ -72,7 +72,7 @@ void		rrr(t_node **stack_a, t_node **stack_b);
 /* io_utils.c */
 void		put_str(char *str);
 t_node		*fill_list(int count, char **nums);
-int			arg_is_number(char *argv);
+bool		is_number(char *argv);
 int			is_sign(char c);
 int			is_digit(char c);
 
@@ -83,7 +83,7 @@ void		to_front_a(t_node **stack_a, t_node *node);
 void		push_swap(t_node **stack_a, t_node **stack_b);
 
 /* input_validator.c */
-int			validate_input(char **argv);
+bool		is_valid(int argc, char **argv);
 int			is_zero(char *argv);
 void		ft_free_f(char **argv);
 

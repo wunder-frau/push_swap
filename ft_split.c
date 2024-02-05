@@ -1,24 +1,5 @@
 #include "push_swap.h"
 
-t_node	*fill_split(int argc, char **args)
-{
-	t_node	*stack_a;
-
-	if (!args)
-		return (0);
-	stack_a = fill_list(argc, args);
-	// if (find_min(stack_a) == stack_a)
-	// {
-	// 	//ft_free(args);
-	// 	//to_front_a(&stack_a, find_min(stack_a));
-	// 	free_list(&stack_a);
-	// 	return (0);
-	// }
-	// print_list(stack_a);
-	// 	printf("\n");
-	return (stack_a);
-}
-
 static char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
