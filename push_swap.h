@@ -44,6 +44,7 @@ int			distance(t_node *first, t_node *last);
 int			len(t_node *head);
 void		insert(t_node *prev, t_node *curr);
 bool		is_unique(t_node *head, t_node *unique);
+bool		is_sorted(t_node *head);
 void		push_front(t_node **head, int value);
 void		push_back(t_node *head, int value);
 void		rotate_front(t_node **head);

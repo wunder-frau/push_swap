@@ -45,14 +45,14 @@ int	main(int argc, char **argv)
 		// if (!validate_input(argv))
 		// handle_error(NULL, NULL);
 	count = len(stack_a);
-	if (count > 1)
+	if (count > 1 && !is_sorted(stack_a))
 	{
 		quicksort_indices(stack_a, 0, count - 1);
 		move_n(&stack_a, &stack_b, count - 3);
 		micro_sort(&stack_a);
 		while(stack_b)
 			push_swap(&stack_a, &stack_b);
-		if (find_min(stack_a) != stack_a)
+		if (!is_sorted(stack_a))
 			to_front_a(&stack_a, find_min(stack_a));
 	}
 	// print_list(stack_a);

@@ -154,6 +154,23 @@ bool	is_unique(t_node *head, t_node *unique)
 }
 
 /**
+ * Check if linked list is sorted in ascending order.
+*/
+bool	is_sorted(t_node *head)
+{
+	t_node	*node;
+
+	node = head;
+	while (node && node->next)
+	{
+		if (node->value > node->next->value)
+			return (false);
+		node = node->next;
+	}
+	return (true);
+}
+
+/**
  * Create a node at the front with a value. Invalidates indices.
  */
 void	push_front(t_node **head, int value)
