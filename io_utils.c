@@ -24,11 +24,13 @@ bool	is_number(char *argv)
 	int	i;
 
 	i = 0;
+	if (argv[i] == 0)
+		return (false);
 	if (is_sign(argv[i]) && argv[i + 1] != '\0')
 		i++;
 	while (argv[i] && is_digit(argv[i]))
 		i++;
-	if (argv[i] != '\0' && !is_digit(argv[i]))
+	if (argv[i] != '\0')
 		return (false);
 	return (true);
 }
@@ -52,7 +54,7 @@ static int	ft_atoi(const char *str)
 	while (is_digit(str[i]))
 	{
 		nb = (nb * 10) + (str[i] - '0');
-		i++;
+			i++;
 	}
 	nb *= isneg;
 	if (!(INT_MIN <= nb && nb <= INT_MAX))
