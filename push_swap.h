@@ -73,20 +73,14 @@ void		rrr(t_node **stack_a, t_node **stack_b);
 /* io_utils.c */
 void		put_str(char *str);
 t_node		*fill_list(int count, char **nums);
-bool		is_number(char *argv);
-int			is_sign(char c);
-int			is_digit(char c);
+bool		is_valid(int argc, char **argv);
+void		free_argv(char **argv);
 
 /* stack_helpers.c */
 void 		micro_sort(t_node **stack);
 void		move_n(t_node **stack_a, t_node **stack_b, const int count);
 void		to_front_a(t_node **stack_a, t_node *node);
 void		push_swap(t_node **stack_a, t_node **stack_b);
-
-/* input_validator.c */
-bool		is_valid(int argc, char **argv);
-int			is_zero(char *argv);
-void		ft_free_f(char **argv);
 
 /* split.c */
 char	**ft_split(char const *s, char c);

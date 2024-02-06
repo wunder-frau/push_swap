@@ -19,7 +19,7 @@ static t_node *fill(int argc, char **argv)
 		if (!is_valid(argc, argv))
 			handle_error(NULL, NULL);
 		stack_a = fill_list(argc, argv);
-		ft_free_f(argv);
+		free_argv(argv);
 	}
 	else
 	{
@@ -42,8 +42,6 @@ int	main(int argc, char **argv)
 		return (0);
 	stack_a = fill(argc, argv);
 	stack_b = NULL;
-		// if (!validate_input(argv))
-		// handle_error(NULL, NULL);
 	count = len(stack_a);
 	if (count > 1 && !is_sorted(stack_a))
 	{
@@ -55,8 +53,6 @@ int	main(int argc, char **argv)
 		if (!is_sorted(stack_a))
 			to_front_a(&stack_a, find_min(stack_a));
 	}
-	// print_list(stack_a);
-	// ft_free_f(argv);
 	free_list(&stack_a);
 	free_list(&stack_b);
 	return (0);

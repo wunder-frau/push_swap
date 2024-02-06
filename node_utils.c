@@ -38,6 +38,7 @@ t_node	*new_node(int value)
 	return (new);
 }
 
+// ?
 void print_node(t_node *node)
 {
 	// printf("{[%d], %d}->\n", node->index, node->value);

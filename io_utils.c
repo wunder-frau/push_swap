@@ -1,5 +1,5 @@
 #include "push_swap.h"
-
+// ?
 void	put_str(char *str)
 {
 	int i;
@@ -9,17 +9,17 @@ void	put_str(char *str)
 		write(1, &str[i++], 1);
 }
 
-int is_digit(char c)
+static bool	is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-int	is_sign(char c)
+static bool	is_sign(char c)
 {
 	return (c == '+' || c == '-');
 }
 
-bool	is_number(char *argv)
+static bool	is_number(char *argv)
 {
 	int	i;
 
@@ -62,6 +62,20 @@ static int	ft_atoi(const char *str)
 	return (nb);
 }
 
+static bool	is_zero(char *argv)
+{
+	int	i;
+
+	i = 0;
+	if (is_sign(argv[i]))
+		i++;
+	while (argv[i] && argv[i] == '0')
+		i++;
+	if (argv[i] != '\0')
+		return (false);
+	return (true);
+}
+
 t_node *fill_list(int count, char **nums)
 {
 	t_node	*head;
@@ -70,7 +84,7 @@ t_node *fill_list(int count, char **nums)
 
 	head = new_node(ft_atoi(nums[0]));
 	if (!head)
-		handle_error(&head, NULL); // ?
+		handle_error(NULL, NULL); // ?
 	nb = 0;
 	i = 1;
 	while (i < count)
@@ -83,4 +97,45 @@ t_node *fill_list(int count, char **nums)
 	}
 	set_indices(head);
 	return (head);
+}
+
+/**
+ * Prints "Error\n" after freeing stack a and b, exits with error code 1.
+ */
+void	handle_error(t_node **stack_a, t_node **stack_b)
+{
+	if (stack_a == NULL || *stack_a != NULL)
+		free_list(stack_a);
+	if (stack_b == NULL || *stack_b != NULL)
+		free_list(stack_b);
+	write(2, "Error\n", 6);
+		exit (1);
+}
+
+void	free_argv(char **argv)
+{
+	int	i;
+	i = -1;
+	if (argv == NULL || *argv == NULL)
+		return ;
+	while (argv[++i])
+		free(argv[i]);
+	free(argv);
+}
+
+bool	is_valid(int argc, char **argv)
+{
+	int	i;
+	int	nb_zeros;
+
+	nb_zeros = 0;
+	i = 0;
+	while (i < argc)
+	{
+		if (!is_number(argv[i]))
+			return (false);
+		nb_zeros += is_zero(argv[i]);
+		i++;
+	}
+	return (nb_zeros <= 1);
 }

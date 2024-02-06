@@ -254,6 +254,7 @@ void	free_list(t_node **head)
 	*head = NULL;
 }
 
+// ?
 void	print_list(t_node *head)
 {
 	t_node *node;
