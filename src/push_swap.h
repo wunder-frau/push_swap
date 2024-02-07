@@ -13,11 +13,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "../libft/libft.h"
 # include <limits.h>
 # include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h> // ?
+# include <stdio.h> //?
+# include <stdlib.h> //?
+# include <string.h> //?
 # include <unistd.h>
 
 typedef struct s_node
@@ -71,7 +72,6 @@ void		rrb(t_node **stack_b);
 void		rrr(t_node **stack_a, t_node **stack_b);
 
 /* io_utils.c */
-void		put_str(char *str);
 t_node		*fill_list(int count, char **nums);
 bool		is_valid(int argc, char **argv);
 void		free_argv(char **argv);
@@ -81,8 +81,5 @@ void 		micro_sort(t_node **stack);
 void		move_n(t_node **stack_a, t_node **stack_b, const int count);
 void		to_front_a(t_node **stack_a, t_node *node);
 void		push_swap(t_node **stack_a, t_node **stack_b);
-
-/* split.c */
-char	**ft_split(char const *s, char c);
 
 #endif

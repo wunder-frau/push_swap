@@ -6,9 +6,8 @@ SRC_PATH = src/
 OBJ_PATH = obj/
 
 SRC = 	main.c \
-			actions.c ft_split.c \
 			io_utils.c list_utils.c node_utils.c \
-			stack_helpers.c quicksort.c \
+			stack_helpers.c quicksort.c actions.c\
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 LIBFT = libft/libft.a

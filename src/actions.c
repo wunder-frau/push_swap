@@ -4,14 +4,14 @@ void sa(t_node *stack_a)
 {
 	swap_values(stack_a, stack_a->next);
 	swap_indices(stack_a, stack_a->next);
-	put_str("sa\n");
+	ft_putstr_fd("sa\n", 1);
 }
 
 void sb(t_node *stack_b)
 {
 	swap_values(stack_b, stack_b->next);
 	swap_indices(stack_b, stack_b->next);
-	put_str("sb\n");
+	ft_putstr_fd("sb\n", 1);
 }
 
 void ss(t_node *stack_a, t_node *stack_b)
@@ -20,7 +20,7 @@ void ss(t_node *stack_a, t_node *stack_b)
 	swap_indices(stack_a, stack_a->next);
 	swap_values(stack_b, stack_b->next);
 	swap_indices(stack_b, stack_b->next);
-	put_str("ss\n");
+	ft_putstr_fd("ss\n", 1);
 }
 
 void pa(t_node **stack_a, t_node **stack_b)
@@ -31,7 +31,7 @@ void pa(t_node **stack_a, t_node **stack_b)
 	//(*stack_a)->index = (*stack_b)->index;
 	swap_indices(*stack_a, *stack_b);
 	pop_front(stack_b);
-	put_str("pa\n");
+	ft_putstr_fd("pa\n", 1);
 }
 
 void pb(t_node **stack_b, t_node **stack_a)
@@ -42,43 +42,43 @@ void pb(t_node **stack_b, t_node **stack_a)
 	//(*stack_b)->index = (*stack_a)->index;
 	swap_indices(*stack_b, *stack_a);
 	pop_front(stack_a);
-	put_str("pb\n");
+	ft_putstr_fd("pb\n", 1);
 }
 
 void ra(t_node **stack_a)
 {
 	rotate_back(stack_a);
-	put_str("ra\n");
+	ft_putstr_fd("ra\n", 1);
 }
 
 void rb(t_node **stack_b)
 {
 	rotate_back(stack_b);
-	put_str("rb\n");
+	ft_putstr_fd("rb\n", 1);
 }
 
 void rr(t_node **stack_a, t_node **stack_b)
 {
 	rotate_back(stack_a);
 	rotate_back(stack_b);
-	put_str("rr\n");
+	ft_putstr_fd("rr\n", 1);
 }
 
 void rra(t_node **stack_a)
 {
 	rotate_front(stack_a);
-	put_str("rra\n");
+	ft_putstr_fd("rra\n", 1);
 }
 
 void rrb(t_node **stack_b)
 {
 	rotate_front(stack_b);
-	put_str("rrb\n");
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void rrr(t_node **stack_a, t_node **stack_b)
 {
 	rotate_front(stack_a);
 	rotate_front(stack_b);
-	put_str("rrr\n");
+	ft_putstr_fd("rrr\n", 1);
 }

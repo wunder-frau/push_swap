@@ -130,11 +130,9 @@ static void	to_front_ab(t_node **stack_a, t_node **stack_b, t_node *node)
 
 	closest = find_closest(*stack_a, node->index);
 	ra_count = distance(*stack_a, closest);
-	rra_count = distance(closest, back(*stack_a));
-	rra_count++;
+	rra_count = distance(closest, back(*stack_a)) + 1;
 	rb_count = distance(*stack_b, node);
-	rrb_count = distance(node, back(*stack_b));
-	rrb_count++;
+	rrb_count = distance(node, back(*stack_b)) + 1;
 	if ((ra_count < rra_count && rb_count > rrb_count) ||
 			(ra_count > rra_count && rb_count < rrb_count))
 		return ;
