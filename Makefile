@@ -33,8 +33,6 @@ clean:
 fclean: clean
 	make fclean -C ./libft
 	@rm -f $(NAME)
-	@rm -rf ./a.out.dSYM
-	@rm -rf ./push_swap.dSYM
 
 re: fclean all
 
