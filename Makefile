@@ -1,21 +1,39 @@
-SRCS = $(wildcard *.c)
-
-OBJ = $(SRCS:.c=.o)
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
-all: $(NAME)
+SRC_PATH = src/
+OBJ_PATH = obj/
 
+SRC = 	main.c \
+			actions.c ft_split.c \
+			io_utils.c list_utils.c node_utils.c \
+			stack_helpers.c quicksort.c \
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+SRCS = $(addprefix $(SRC_PATH), $(SRC))
+LIBFT = libft/libft.a
+OBJ =	$(SRC:.c=.o)
+OBJS =	$(addprefix $(OBJ_PATH), $(OBJ))
+
+all: $(OBJ_PATH) $(NAME)
+
+$(NAME): $(OBJS)
+	make -C ./libft
+	@$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -o $(NAME)
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
+
+$(OBJ_PATH):
+	mkdir $(OBJ_PATH)
 
 clean:
-	rm -rf $(OBJ)
+	make clean -C ./libft
+	@rm -rf $(OBJ_PATH)
 
 fclean: clean
-	rm -rf $(NAME)
+	make fclean -C ./libft
+	@rm -f $(NAME)
 
 re: fclean all
 
