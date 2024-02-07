@@ -7,7 +7,7 @@ OBJ_PATH = obj/
 
 SRC = 	main.c \
 			io_utils.c list_utils.c node_utils.c \
-			stack_helpers.c quicksort.c actions.c\
+			stack_helpers.c quicksort.c actions.c \
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 LIBFT = libft/libft.a
@@ -33,6 +33,8 @@ clean:
 fclean: clean
 	make fclean -C ./libft
 	@rm -f $(NAME)
+	@rm -rf ./a.out.dSYM
+	@rm -rf ./push_swap.dSYM
 
 re: fclean all
 
