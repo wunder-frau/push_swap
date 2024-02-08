@@ -5,6 +5,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 SRC_PATH = src/
 ACTIONS_path = actions
 SORT_path = sort
+UTILS_path = utils
 OBJ_PATH = obj/
 
 SRC = 	main.c \
@@ -13,8 +14,9 @@ SRC = 	main.c \
 			$(SORT_path)/find_optimal.c $(SORT_path)/micro_sort.c \
 			$(SORT_path)/quicksort.c $(SORT_path)/stack_helpers.c \
 			$(SORT_path)/to_front.c \
-			io_utils.c list_utils.c node_utils.c \
-			print_utils.c \
+			$(UTILS_path)/distance_utils.c $(UTILS_path)/io_utils.c \
+			$(UTILS_path)/list_utils.c $(UTILS_path)/node_utils.c \
+			$(UTILS_path)/position_utils.c $(UTILS_path)/validation_utils.c \
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 LIBFT = libft/libft.a
@@ -31,11 +33,11 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
 
 $(OBJ_PATH):
-	mkdir $(OBJ_PATH) $(OBJ_PATH)actions $(OBJ_PATH)sort
+	mkdir $(OBJ_PATH) $(OBJ_PATH)actions $(OBJ_PATH)sort $(OBJ_PATH)utils
 
 clean:
 	make clean -C ./libft
-	@rm -rf $(OBJ_PATH) $(OBJ_PATH)actions
+	@rm -rf $(OBJ_PATH)
 
 fclean: clean
 	make fclean -C ./libft

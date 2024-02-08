@@ -19,9 +19,10 @@
  * and count "words" again.
  * multiple input values: doesnt consider program name in argv.
  */
-static t_node *fill(int argc, char **argv)
+static t_node	*fill(int argc, char **argv)
 {
 	t_node	*stack_a;
+
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
@@ -60,7 +61,7 @@ int	main(int argc, char **argv)
 		quicksort_indices(stack_a, 0, count - 1);
 		move_n(&stack_a, &stack_b, count - 3);
 		micro_sort(&stack_a);
-		while(stack_b)
+		while (stack_b)
 			push_swap(&stack_a, &stack_b);
 		if (!is_sorted(stack_a))
 			to_front_a(&stack_a, find_min(stack_a));

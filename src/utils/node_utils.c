@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	swap_values(t_node *a, t_node *b)
 {
-	int tmp;
+	int	tmp;
 
 	if (a == NULL || b == NULL)
 		return ;
@@ -25,7 +25,7 @@ void	swap_values(t_node *a, t_node *b)
 
 void	swap_indices(t_node *a, t_node *b)
 {
-	int tmp;
+	int	tmp;
 
 	if (a == NULL || b == NULL)
 		return ;
@@ -37,7 +37,7 @@ void	swap_indices(t_node *a, t_node *b)
 /**
  * Generates self-existing new node, i.e. head node.
  */
-t_node	*new_node(int value) 
+t_node	*new_node(int value)
 {
 	t_node	*new;
 
@@ -48,4 +48,25 @@ t_node	*new_node(int value)
 	new->index = 0;
 	new->next = NULL;
 	return (new);
+}
+
+/**
+ * Inserts node at any position after prev node. Invalidates indices.
+ */
+void	insert(t_node *prev, t_node *curr)
+{
+	if (prev == NULL || curr == NULL)
+		return ;
+	curr->next = prev->next;
+	prev->next = curr;
+}
+
+/**
+ * Get the last element.
+ */
+t_node	*back(t_node *node)
+{
+	while (node && node->next != NULL)
+		node = node->next;
+	return (node);
 }

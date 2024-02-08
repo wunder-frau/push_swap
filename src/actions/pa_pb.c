@@ -12,6 +12,20 @@
 
 #include "../push_swap.h"
 
+/**
+ *  Delete the front element.
+ */
+void	pop_front(t_node **head)
+{
+	t_node	*front;
+
+	if (*head == NULL)
+		return ;
+	front = *head;
+	*head = (*head)->next;
+	free(front);
+}
+
 void	pa(t_node **stack_a, t_node **stack_b)
 {
 	if (stack_b == NULL)

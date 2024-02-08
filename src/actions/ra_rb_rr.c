@@ -12,6 +12,39 @@
 
 #include "../push_swap.h"
 
+/**
+ * Move the last element to the front.
+ * Get the element before last by using (len(*head) - 2).
+ */
+void	rotate_front(t_node **head)
+{
+	t_node	*last;
+
+	last = back(*head);
+	if (*head == NULL || last == *head)
+		return ;
+	at_pos(*head, len(*head) - 2)->next = NULL;
+	last->next = *head;
+	*head = last;
+}
+
+/**
+ * Move first element to the end.
+ */
+void	rotate_back(t_node **head)
+{
+	t_node	*last;
+	t_node	*temp;
+
+	if (*head == NULL || (*head)->next == NULL)
+		return ;
+	temp = *head;
+	*head = (*head)->next;
+	last = back(*head);
+	temp->next = NULL;
+	last->next = temp;
+}
+
 void	ra(t_node **stack_a)
 {
 	rotate_back(stack_a);
