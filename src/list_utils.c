@@ -265,18 +265,3 @@ void	free_list(t_node **head)
 	}
 	*head = NULL;
 }
-
-// ?
-void	print_list(t_node *head)
-{
-	t_node *node;
-
-	node = head;
-	while (node != NULL)
-	{
-		// printf("%d: ", distance(head, node));
-		print_node(node);
-		node = node->next;
-	}
-	// printf("NULL\n");
-}

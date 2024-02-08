@@ -18,7 +18,6 @@
 # include <stdbool.h>
 # include <stdio.h> //?
 # include <stdlib.h> //?
-# include <string.h> //?
 # include <unistd.h>
 
 typedef struct s_node
@@ -28,11 +27,29 @@ typedef struct s_node
 	struct	s_node *next;
 } t_node;
 
+/* actions/pa_pb.c */
+void		pa(t_node **stack_a, t_node **stack_b);
+void		pb(t_node **stack_b, t_node **stack_a);
+
+/* actions/ra_rb_rr.c */
+void		ra(t_node **stack_a);
+void		rb(t_node **stack_b);
+void		rr(t_node **stack_a, t_node **stack_b);
+
+/* actions/rra_rrb_rrr.c */
+void		rra(t_node **stack_a);
+void		rrb(t_node **stack_b);
+void		rrr(t_node **stack_a, t_node **stack_b);
+
+/* actions/sa_sb_ss.c */
+void		sa(t_node *stack_a);
+void		sb(t_node *stack_b);
+void		ss(t_node *stack_a, t_node *stack_b);
+
 /* node_utils.c */
 void		swap_values(t_node *a, t_node *b);
 void		swap_indices(t_node *a, t_node *b);
 t_node		*new_node(int value);
-void 		print_node(t_node *node);
 
 /* list_utils.c */
 t_node		*at_ind(t_node *head, int index);
@@ -53,23 +70,21 @@ void		rotate_back(t_node **head);
 void		pop_front(t_node **head);
 void		free_list(t_node **head);
 void		handle_error(t_node **stack_a, t_node **stack_b);
-void 		print_list(t_node *head);
 
-/* quicksort_indices.c */
+/* quicksort.c */
 void		quicksort_indices(t_node *head, int start, int end);
 
-/* actions.c */
-void		sa(t_node *stack_a);
-void		sb(t_node *stack_b);
-void		ss(t_node *stack_a, t_node *stack_b);
-void		pa(t_node **stack_a, t_node **stack_b);
-void		pb(t_node **stack_b, t_node **stack_a);
-void		ra(t_node **stack_a);
-void		rb(t_node **stack_b);
-void		rr(t_node **stack_a, t_node **stack_b);
-void		rra(t_node **stack_a);
-void		rrb(t_node **stack_b);
-void		rrr(t_node **stack_a, t_node **stack_b);
+/* micro_sort.c */
+void 		micro_sort(t_node **stack);
+
+/* find_optimal.c */
+t_node  *find_optimal(t_node *stack_a, t_node *stack_b);
+t_node	*find_closest(t_node *head, const int index);
+
+/* to_front.c */
+void		to_front_a(t_node **stack_a, t_node *node);
+void		to_front_b(t_node **stack_b, t_node *node);
+void		to_front_ab(t_node **stack_a, t_node **stack_b, t_node *node);
 
 /* io_utils.c */
 t_node		*fill_list(int count, char **nums);
@@ -77,9 +92,11 @@ bool		is_valid(int argc, char **argv);
 void		free_argv(char **argv);
 
 /* stack_helpers.c */
-void 		micro_sort(t_node **stack);
 void		move_n(t_node **stack_a, t_node **stack_b, const int count);
-void		to_front_a(t_node **stack_a, t_node *node);
 void		push_swap(t_node **stack_a, t_node **stack_b);
+
+/* print_utis.c */
+void 		print_list(t_node *head);
+void 		print_node(t_node *node);
 
 #endif
