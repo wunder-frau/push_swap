@@ -3,16 +3,18 @@ CC = cc
 CFLAGS = -g -Wall -Wextra -Werror
 
 SRC_PATH = src/
-ACTIONS_PATH = actions
+ACTIONS_path = actions
+SORT_path = sort
 OBJ_PATH = obj/
 
 SRC = 	main.c \
-			$(ACTIONS_PATH)/pa_pb.c $(ACTIONS_PATH)/ra_rb_rr.c \
-			$(ACTIONS_PATH)/rra_rrb_rrr.c $(ACTIONS_PATH)/sa_sb_ss.c \
+			$(ACTIONS_path)/pa_pb.c $(ACTIONS_path)/ra_rb_rr.c \
+			$(ACTIONS_path)/rra_rrb_rrr.c $(ACTIONS_path)/sa_sb_ss.c \
+			$(SORT_path)/find_optimal.c $(SORT_path)/micro_sort.c \
+			$(SORT_path)/quicksort.c $(SORT_path)/stack_helpers.c \
+			$(SORT_path)/to_front.c \
 			io_utils.c list_utils.c node_utils.c \
-			stack_helpers.c quicksort.c \
-			find_optimal.c micro_sort.c print_utils.c\
-			to_front.c \
+			print_utils.c \
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 LIBFT = libft/libft.a
@@ -29,7 +31,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
 
 $(OBJ_PATH):
-	mkdir $(OBJ_PATH) $(OBJ_PATH)actions
+	mkdir $(OBJ_PATH) $(OBJ_PATH)actions $(OBJ_PATH)sort
 
 clean:
 	make clean -C ./libft

@@ -46,6 +46,21 @@ void		sa(t_node *stack_a);
 void		sb(t_node *stack_b);
 void		ss(t_node *stack_a, t_node *stack_b);
 
+/* quicksort.c */
+void		quicksort_indices(t_node *head, int start, int end);
+
+/* micro_sort.c */
+void 		micro_sort(t_node **stack);
+
+/* find_optimal.c */
+t_node  	*find_optimal(t_node *stack_a, t_node *stack_b);
+t_node		*find_closest(t_node *head, const int index);
+
+/* to_front.c */
+void		to_front_a(t_node **stack_a, t_node *node);
+void		to_front_b(t_node **stack_b, t_node *node);
+void		to_front_ab(t_node **stack_a, t_node **stack_b, t_node *node);
+
 /* node_utils.c */
 void		swap_values(t_node *a, t_node *b);
 void		swap_indices(t_node *a, t_node *b);
@@ -70,21 +85,6 @@ void		rotate_back(t_node **head);
 void		pop_front(t_node **head);
 void		free_list(t_node **head);
 void		handle_error(t_node **stack_a, t_node **stack_b);
-
-/* quicksort.c */
-void		quicksort_indices(t_node *head, int start, int end);
-
-/* micro_sort.c */
-void 		micro_sort(t_node **stack);
-
-/* find_optimal.c */
-t_node  *find_optimal(t_node *stack_a, t_node *stack_b);
-t_node	*find_closest(t_node *head, const int index);
-
-/* to_front.c */
-void		to_front_a(t_node **stack_a, t_node *node);
-void		to_front_b(t_node **stack_b, t_node *node);
-void		to_front_ab(t_node **stack_a, t_node **stack_b, t_node *node);
 
 /* io_utils.c */
 t_node		*fill_list(int count, char **nums);

@@ -1,4 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   to_front.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: istasheu <istasheu@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/08 14:44:35 by istasheu          #+#    #+#             */
+/*   Updated: 2024/02/08 14:44:48 by istasheu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
 
 /**
  * Move the element to the front by rotating the stack A.
@@ -50,19 +62,19 @@ void	to_front_b(t_node **stack_b, t_node *node)
 
 void	to_front_ab(t_node **stack_a, t_node **stack_b, t_node *node)
 {
-	t_node *closest;
-	int	ra_count;
-	int	rra_count;
-	int	rb_count;
-	int	rrb_count;
+	t_node	*closest;
+	int		ra_count;
+	int		rra_count;
+	int		rb_count;
+	int		rrb_count;
 
 	closest = find_closest(*stack_a, node->index);
 	ra_count = distance(*stack_a, closest);
 	rra_count = distance(closest, back(*stack_a)) + 1;
 	rb_count = distance(*stack_b, node);
 	rrb_count = distance(node, back(*stack_b)) + 1;
-	if ((ra_count < rra_count && rb_count > rrb_count) ||
-			(ra_count > rra_count && rb_count < rrb_count))
+	if ((ra_count < rra_count && rb_count > rrb_count)
+		|| (ra_count > rra_count && rb_count < rrb_count))
 		return ;
 	while (ra_count && rra_count && rb_count && rrb_count)
 	{
@@ -76,4 +88,3 @@ void	to_front_ab(t_node **stack_a, t_node **stack_b, t_node *node)
 		rrb_count--;
 	}
 }
-

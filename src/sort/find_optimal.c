@@ -1,4 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_optimal.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: istasheu <istasheu@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/08 14:39:13 by istasheu          #+#    #+#             */
+/*   Updated: 2024/02/08 14:39:22 by istasheu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
 
 static int	min(const int lhs, const int rhs)
 {
@@ -10,7 +22,7 @@ static int	min(const int lhs, const int rhs)
 /**
  * Count moves to get an element `node` to the top its stack
  */
-static int count_moves(t_node *head, t_node *node)
+static int	count_moves(t_node *head, t_node *node)
 {
 	int	lhs_count;
 	int	rhs_count;
@@ -26,7 +38,7 @@ static int count_moves(t_node *head, t_node *node)
  */
 t_node	*find_closest(t_node *head, const int index)
 {
-	int	closest_ind;
+	int		closest_ind;
 	t_node	*node;
 
 	closest_ind = INT_MAX;
@@ -47,13 +59,13 @@ t_node	*find_closest(t_node *head, const int index)
  * and for which it takes the least actions count to move it to its
  * neighbour in the stack A.
  */
-t_node  *find_optimal(t_node *stack_a, t_node *stack_b)
+t_node	*find_optimal(t_node *stack_a, t_node *stack_b)
 {
-	t_node *node;
-	t_node *optimal;
-	int min_delta;
-	int delta;
-	t_node *closest;
+	t_node	*node;
+	t_node	*optimal;
+	t_node	*closest;
+	int		min_delta;
+	int		delta;
 
 	min_delta = INT_MAX;
 	node = stack_b;

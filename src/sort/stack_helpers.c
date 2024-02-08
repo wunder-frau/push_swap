@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /**
  * Move `count` lowest values from stack A to stack B.
- * If the index is greater than `stack_init`, indicating that it is on the left
- * side of a stack, the loop rotates `ra`; otherwise, it pushes to stack B using `pb`.
+ * If the index is greater than `stack_init`, indicating
+ * that it is on the left side of a stack, the loop
+ * rotates `ra`; otherwise, it pushes to stack B using `pb`.
  * This reverts the elements order in the stack B due to usage of `pb`.
  */
 void	move_n(t_node **stack_a, t_node **stack_b, const int count)
@@ -47,10 +48,9 @@ void	move_n(t_node **stack_a, t_node **stack_b, const int count)
 	}
 }
 
-
 void	push_swap(t_node **stack_a, t_node **stack_b)
 {
-	t_node *optimal;
+	t_node	*optimal;
 
 	optimal = find_optimal(*stack_a, *stack_b);
 	to_front_ab(stack_a, stack_b, optimal);

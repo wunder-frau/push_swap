@@ -10,17 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /**
  * Lomuto partition scheme.
- * Sort (a portion of an) list's indices preserving nodes positions and their values.
+ * Sort (a portion of an) list's indices preserving nodes
+ * positions and their values.
  */
 static int	partition(t_node *head, int start, int end)
 {
-	int pivot;
-	int i;
-	int j;
+	int	pivot;
+	int	i;
+	int	j;
 
 	pivot = at_ind(head, end)->value;
 	i = start - 1;
