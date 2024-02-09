@@ -6,7 +6,7 @@ SRC_PATH = src/
 ACTIONS_PATH = actions/
 SORT_PATH = sort/
 UTILS_PATH = utils/
-OBJ_PATH = obj/
+OBJ_PATH = build/
 
 ACTIONS_SRC = pa_pb.c ra_rb_rr.c rra_rrb_rrr.c sa_sb_ss.c
 SORT_SRC = find_optimal.c micro_sort.c quicksort.c stack_helpers.c to_front.c

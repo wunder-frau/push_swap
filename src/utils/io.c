@@ -54,15 +54,11 @@ t_node	*fill_list(int count, char **nums)
 	int		i;
 
 	head = new_node(ft_atoi(nums[0]));
-	if (head->value == -1)
-		handle_error(NULL, NULL);
 	nb = 0;
 	i = 1;
 	while (i < count)
 	{
 		nb = ft_atoi(nums[i]);
-		if (nb == -1)
-			handle_error(NULL, NULL);
 		push_back(head, nb);
 		if (!is_unique(head, back(head)))
 			handle_error(&head, NULL);
