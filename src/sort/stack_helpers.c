@@ -21,16 +21,14 @@
  */
 void	move_n(t_node **stack_a, t_node **stack_b, const int count)
 {
-	int	size_init;
+	int	half_size;
 	int	n;
-	int	i;
 
-	size_init = len(*stack_a);
+	half_size = len(*stack_a) / 2;
 	n = 0;
-	i = 0;
-	while (count > 0 && i < size_init && n < size_init / 2)
+	while (count > 0 && n < half_size)
 	{
-		if ((*stack_a)->index > size_init / 2)
+		if ((*stack_a)->index > half_size)
 		{
 			ra(stack_a);
 		}
@@ -39,7 +37,6 @@ void	move_n(t_node **stack_a, t_node **stack_b, const int count)
 			pb(stack_b, stack_a);
 			n++;
 		}
-		i++;
 	}
 	while (n < count)
 	{
