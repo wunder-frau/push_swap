@@ -65,37 +65,37 @@ void	to_front_ab(t_node **stack_a, t_node **stack_b, t_node *node);
 void	move_n(t_node **stack_a, t_node **stack_b, const int count);
 void	push_swap(t_node **stack_a, t_node **stack_b);
 
-/* utils/distance_utils.c */
+/* utils/distance.c */
 t_node	*find_max(t_node *head);
 t_node	*find_min(t_node *head);
 int		distance(t_node *first, t_node *last);
 int		len(t_node *head);
 
-/* utils/io_utils.c */
+/* utils/io.c */
 bool	is_sign(char c);
 bool	is_number(char *argv);
 bool	is_zero(char *argv);
 t_node	*fill_list(int count, char **nums);
 
-/* utils/list_utils.c */
+/* utils/list.c */
 bool	is_unique(t_node *head, t_node *unique);
 bool	is_sorted(t_node *head);
 void	push_front(t_node **head, int value);
 void	push_back(t_node *head, int value);
 
-/* utils/node_utils.c */
+/* utils/node.c */
 void	swap_values(t_node *a, t_node *b);
 void	swap_indices(t_node *a, t_node *b);
 t_node	*new_node(int value);
 void	insert(t_node *prev, t_node *curr);
 t_node	*back(t_node *node);
 
-/* utils/position_utils.c */
+/* utils/position.c */
 t_node	*at_ind(t_node *head, int index);
 t_node	*at_pos(t_node *head, int pos);
 void	set_indices(t_node *head);
 
-/* utils/validation_utis.c */
+/* utils/validation.c */
 void	handle_error(t_node **stack_a, t_node **stack_b);
 void	free_list(t_node **head);
 void	free_argv(char **argv);
